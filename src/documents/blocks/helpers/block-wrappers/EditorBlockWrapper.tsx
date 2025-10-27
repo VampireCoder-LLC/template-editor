@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
 import { setSelectedBlockId, useSelectedBlockId, useDocument } from '../../../editor/EditorContext';
+import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
 
 import ElementPanel from './ElementPanel';
 
@@ -12,6 +13,7 @@ type TEditorBlockWrapperProps = {
 };
 
 export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProps) {
+  const templateFields = useTemplateFields();
   const selectedBlockId = useSelectedBlockId();
   const [mouseInside, setMouseInside] = useState(false);
   const blockId = useCurrentBlockId();
@@ -29,7 +31,7 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
     if (selectedBlockId !== blockId) {
       return null;
     }
-    return <ElementPanel blockId={blockId} />;
+    return <ElementPanel blockId={blockId} templateFields={templateFields} />;
   };
 
   return (

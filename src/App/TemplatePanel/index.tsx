@@ -11,6 +11,7 @@ import {
   useSelectedMainTab,
   useSelectedScreenSize,
 } from '../../documents/editor/EditorContext';
+import { TemplateFieldsProvider } from '../../documents/editor/TemplateFieldsContext';
 import DownloadJson from './DownloadJson';
 import HtmlPanel from './HtmlPanel';
 import ImportJson from './ImportJson';
@@ -32,6 +33,18 @@ export interface TemplateSaveOutput {
 }
 
 /**
+ * Template field for Handlebars insertion
+ */
+export interface TemplateField {
+  /** Field name/identifier */
+  name: string;
+  /** Optional display label for the field */
+  label?: string;
+  /** Optional description of what the field represents */
+  description?: string;
+}
+
+/**
  * Props for the TemplatePanel component
  */
 export interface TemplatePanelProps {
@@ -43,6 +56,10 @@ export interface TemplatePanelProps {
   showImportButton?: boolean;
   /** Show settings button (default: true) */
   showSettingsButton?: boolean;
+  /** Template fields available for insertion (default: []) */
+  templateFields?: (string | TemplateField)[];
+  /** Callback fired when user saves the template */
+  onSave?: () => void;
 }
 
 export default function TemplatePanel({
@@ -50,6 +67,8 @@ export default function TemplatePanel({
   showDownloadButton = true,
   showImportButton = true,
   showSettingsButton = true,
+  templateFields = [],
+  onSave,
 }: TemplatePanelProps = {}) {
   const document = useDocument();
   const selectedMainTab = useSelectedMainTab();
@@ -103,7 +122,7 @@ export default function TemplatePanel({
   };
 
   return (
-    <>
+    <TemplateFieldsProvider fields={templateFields}>
       <Stack
         sx={{
           height: 49,
@@ -144,6 +163,6 @@ export default function TemplatePanel({
         </Stack>
       </Stack>
       <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
-    </>
+    </TemplateFieldsProvider>
   );
 }

@@ -5,10 +5,15 @@ import { Box, Drawer, Tab, Tabs } from '@mui/material';
 import { setSidebarTab, useInspectorDrawerOpen, useSelectedSidebarTab } from '../../documents/editor/EditorContext';
 
 import StylesPanel from './StylesPanel';
+import TemplateFieldsSection, { TemplateField } from './TemplateFieldsSection';
 
 export const INSPECTOR_DRAWER_WIDTH = 320;
 
-export default function InspectorDrawer() {
+interface InspectorDrawerProps {
+  templateFields?: (string | TemplateField)[];
+}
+
+export default function InspectorDrawer({ templateFields = [] }: InspectorDrawerProps) {
   const selectedSidebarTab = useSelectedSidebarTab();
   const inspectorDrawerOpen = useInspectorDrawerOpen();
 
@@ -36,6 +41,10 @@ export default function InspectorDrawer() {
         </Box>
       </Box>
       <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 'calc(100% - 49px)', overflow: 'auto' }}>
+        {/* Template Fields Section - Always at the top */}
+        {templateFields.length > 0 && <TemplateFieldsSection fields={templateFields} />}
+
+        {/* Main Panel Content */}
         {renderCurrentSidebarPanel()}
       </Box>
     </Drawer>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TemplateEditor, TemplateSaveOutput, TEditorConfiguration } from '@vampirecoder/template-editor'
+import { TemplateEditor, TemplateSaveOutput, TEditorConfiguration, TemplateField } from '@vampirecoder/template-editor'
 import './App.css'
 
 // Sample initial template data
@@ -17,6 +17,40 @@ const SAMPLE_TEMPLATE: TEditorConfiguration = {
   subject: 'Welcome to Template Editor',
 }
 
+// Sample template fields for Handlebars insertion
+const TEMPLATE_FIELDS: TemplateField[] = [
+  {
+    name: 'userName',
+    label: 'User Name',
+    description: 'The name of the recipient',
+  },
+  {
+    name: 'userEmail',
+    label: 'Email Address',
+    description: 'The email address of the recipient',
+  },
+  {
+    name: 'systemDateTime',
+    label: 'System Date/Time',
+    description: 'Current system date and time',
+  },
+  {
+    name: 'companyName',
+    label: 'Company Name',
+    description: 'Your company name',
+  },
+  {
+    name: 'supportEmail',
+    label: 'Support Email',
+    description: 'Support contact email',
+  },
+  {
+    name: 'unsubscribeLink',
+    label: 'Unsubscribe Link',
+    description: 'Link to unsubscribe from emails',
+  },
+]
+
 function App() {
   const [saveOutput, setSaveOutput] = useState<TemplateSaveOutput | null>(null)
   const [showJsonTab, setShowJsonTab] = useState(false)
@@ -29,8 +63,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="header">
-        <h1>🎨 Template Editor Demo</h1>
-        <p>Testing NPM package installation and functionality</p>
+        <h1>Vmapire Coder Template Editor Demo</h1>
       </div>
 
       <div className="controls">
@@ -52,6 +85,7 @@ function App() {
           showDownloadButton={true}
           showImportButton={true}
           showSettingsButton={true}
+          templateFields={TEMPLATE_FIELDS}
           height="600px"
         />
       </div>

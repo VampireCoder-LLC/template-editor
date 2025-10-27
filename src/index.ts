@@ -18,7 +18,7 @@
 
 // Main component
 export { default as TemplateEditor } from './TemplateEditor';
-export type { TemplateEditorProps, TemplateSaveOutput } from './TemplateEditor';
+export type { TemplateEditorProps, TemplateSaveOutput, TemplateField } from './TemplateEditor';
 
 // Email builder utilities
 export { Reader, renderToStaticMarkup } from './email-builder';

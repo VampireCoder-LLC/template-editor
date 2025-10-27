@@ -19,6 +19,18 @@ export interface TemplateSaveOutput {
 }
 
 /**
+ * Template field for Handlebars insertion
+ */
+export interface TemplateField {
+  /** Field name/identifier */
+  name: string;
+  /** Optional display label for the field */
+  label?: string;
+  /** Optional description of what the field represents */
+  description?: string;
+}
+
+/**
  * Props for the TemplateEditor component
  */
 export interface TemplateEditorProps {
@@ -38,6 +50,8 @@ export interface TemplateEditorProps {
   showSettingsButton?: boolean;
   /** Container height (default: 100vh) */
   height?: string;
+  /** Template fields available for insertion as Handlebars syntax (default: []) */
+  templateFields?: (string | TemplateField)[];
 }
 
 /**
@@ -51,6 +65,7 @@ function TemplateEditorContent({
   showImportButton = true,
   showSettingsButton = true,
   height = '100vh',
+  templateFields = [],
 }: TemplateEditorProps) {
   const document = useDocument();
 
@@ -87,11 +102,12 @@ function TemplateEditorContent({
       }}
     >
       <TemplatePanel
-        onSave={handleSave}
         showJsonTab={showJsonTab}
         showDownloadButton={showDownloadButton}
         showImportButton={showImportButton}
         showSettingsButton={showSettingsButton}
+        templateFields={templateFields}
+        onSave={handleSave}
       />
     </Box>
   );

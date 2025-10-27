@@ -21,8 +21,10 @@ import {
 } from '@mui/material';
 
 import { TEditorBlock } from '../../../editor/core';
-import { resetDocument, setDocument, setSelectedBlockId, useDocument } from '../../../editor/EditorContext';
+import { resetDocument, setDocument, useDocument } from '../../../editor/EditorContext';
+import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
+import TemplateFieldsSection from '../../../../App/InspectorDrawer/TemplateFieldsSection';
 
 import AvatarSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ButtonSidebarPanel';
@@ -73,10 +75,10 @@ type Props = {
 
 export default function ElementPanel({ blockId }: Props) {
   const editorDocument = useDocument();
+  const templateFields = useTemplateFields();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const block = editorDocument[blockId];
-  const blockType = block?.type;
 
   const performDelete = () => {
     const filterChildrenIds = (childrenIds: string[] | null | undefined) => {
@@ -312,6 +314,9 @@ export default function ElementPanel({ blockId }: Props) {
   return (
     <>
       <Paper sx={sx} onClick={(ev) => ev.stopPropagation()}>
+        {/* Template Fields Section - Always at the top */}
+        {templateFields.length > 0 && <TemplateFieldsSection fields={templateFields} />}
+
         {/* Inspector Panel Content */}
         <Box sx={{ flex: 1, overflowY: 'auto', overflow: 'hidden' }}>
           {renderInspectorContent()}
