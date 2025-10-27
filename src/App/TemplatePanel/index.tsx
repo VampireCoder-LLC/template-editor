@@ -19,7 +19,38 @@ import MainTabsGroup from './MainTabsGroup';
 import SettingsButton from './SettingsButton';
 import SubjectInput from './SubjectInput';
 
-export default function TemplatePanel() {
+/**
+ * Output object passed to onSave callback
+ */
+export interface TemplateSaveOutput {
+  /** Rendered HTML output of the template */
+  htmlOutput: string;
+  /** JSON representation of the template */
+  jsonOutput: Record<string, unknown>;
+  /** Email subject line */
+  subjectOutput: string;
+}
+
+/**
+ * Props for the TemplatePanel component
+ */
+export interface TemplatePanelProps {
+  /** Show JSON tab in the editor (default: false) */
+  showJsonTab?: boolean;
+  /** Show download button (default: true) */
+  showDownloadButton?: boolean;
+  /** Show import button (default: true) */
+  showImportButton?: boolean;
+  /** Show settings button (default: true) */
+  showSettingsButton?: boolean;
+}
+
+export default function TemplatePanel({
+  showJsonTab = false,
+  showDownloadButton = true,
+  showImportButton = true,
+  showSettingsButton = true,
+}: TemplatePanelProps = {}) {
   const document = useDocument();
   const selectedMainTab = useSelectedMainTab();
   const selectedScreenSize = useSelectedScreenSize();
@@ -90,13 +121,13 @@ export default function TemplatePanel() {
       >
         <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
           <Stack direction="row" spacing={2}>
-            <MainTabsGroup />
+            <MainTabsGroup showJsonTab={showJsonTab} />
             <SubjectInput />
           </Stack>
           <Stack direction="row" spacing={2}>
-            <SettingsButton />
-            <DownloadJson />
-            <ImportJson />
+            {showSettingsButton && <SettingsButton />}
+            {showDownloadButton && <DownloadJson />}
+            {showImportButton && <ImportJson />}
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
                 <Tooltip title="Desktop view">

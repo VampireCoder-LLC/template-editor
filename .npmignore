@@ -1,0 +1,54 @@
+# Source files
+src/
+*.tsx
+*.ts
+
+# Configuration files
+vite.config.ts
+tsconfig.json
+tsconfig.app.json
+tsconfig.node.json
+eslint.config.js
+
+# Development files
+.env
+.env.local
+.env.*.local
+
+# Documentation
+*.md
+!README.md
+
+# Git
+.git
+.gitignore
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+.turbo/
+dist/
+!dist/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.prettierignore
+.prettierrc
+
