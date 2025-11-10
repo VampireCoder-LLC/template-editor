@@ -17,6 +17,9 @@ export default function MultiStylePropertyPanel({ names, value, onChange }: Mult
   // Check if both fontFamily and fontSize are in the names array
   const hasFontPair = names.includes('fontFamily') && names.includes('fontSize');
 
+  // Check if both backgroundColor and borderColor are in the names array (for Container blocks)
+  const hasBackgroundBorderColorPair = names.includes('backgroundColor') && names.includes('borderColor');
+
   // Filter out properties that will be rendered together
   let displayNames = names;
   if (hasColorPair) {
@@ -24,6 +27,9 @@ export default function MultiStylePropertyPanel({ names, value, onChange }: Mult
   }
   if (hasFontPair) {
     displayNames = displayNames.filter((n) => n !== 'fontSize');
+  }
+  if (hasBackgroundBorderColorPair) {
+    displayNames = displayNames.filter((n) => n !== 'borderColor');
   }
 
   return (
@@ -52,6 +58,20 @@ export default function MultiStylePropertyPanel({ names, value, onChange }: Mult
               </Grid>
               <Grid item xs={6} sx={{ width: '100%' }}>
                 <SingleStylePropertyPanel name="fontSize" value={value || {}} onChange={onChange} />
+              </Grid>
+            </Grid>
+          );
+        }
+
+        // Render backgroundColor and borderColor side-by-side (for Container blocks)
+        if (hasBackgroundBorderColorPair && name === 'backgroundColor') {
+          return (
+            <Grid container spacing={2} key="background-border-color-pair">
+              <Grid item xs={6} sx={{ width: '100%', marginLeft: '-1rem;' }}>
+                <SingleStylePropertyPanel name="backgroundColor" value={value || {}} onChange={onChange} />
+              </Grid>
+              <Grid item xs={6} sx={{ width: '100%' }}>
+                <SingleStylePropertyPanel name="borderColor" value={value || {}} onChange={onChange} />
               </Grid>
             </Grid>
           );

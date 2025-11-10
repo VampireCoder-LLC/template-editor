@@ -62,10 +62,6 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className="header">
-        <h1>Vmapire Coder Template Editor Demo</h1>
-      </div>
-
       <div className="controls">
         <label>
           <input
@@ -86,7 +82,7 @@ function App() {
           showImportButton={true}
           showSettingsButton={true}
           templateFields={TEMPLATE_FIELDS}
-          height="600px"
+          height="800px"
         />
       </div>
 

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
 import { Grid, ToggleButton } from '@mui/material';
+import { RoundedCornerOutlined } from '@mui/icons-material';
 import { ButtonProps, ButtonPropsDefaults, ButtonPropsSchema } from '../../../../blocks/button';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import TextInput from './helpers/inputs/TextInput';
+import SliderInput from './helpers/inputs/SliderInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
 
 type ButtonSidebarPanelProps = {
@@ -30,9 +32,9 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
   const url = data.props?.url ?? ButtonPropsDefaults.url;
   const fullWidth = data.props?.fullWidth ?? ButtonPropsDefaults.fullWidth;
   const size = data.props?.size ?? ButtonPropsDefaults.size;
-  const buttonStyle = data.props?.buttonStyle ?? ButtonPropsDefaults.buttonStyle;
   const buttonTextColor = data.props?.buttonTextColor ?? ButtonPropsDefaults.buttonTextColor;
   const buttonBackgroundColor = data.props?.buttonBackgroundColor ?? ButtonPropsDefaults.buttonBackgroundColor;
+  const borderRadius = data.props?.borderRadius ?? 0;
 
   return (
     <BaseSidebarPanel title="Button block">
@@ -64,15 +66,17 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
         <ToggleButton value="medium">Md</ToggleButton>
         <ToggleButton value="large">Lg</ToggleButton>
       </RadioGroupInput>
-      <RadioGroupInput
-        label="Style"
-        defaultValue={buttonStyle}
-        onChange={(buttonStyle) => updateData({ ...data, props: { ...data.props, buttonStyle } })}
-      >
-        <ToggleButton value="rectangle">Rectangle</ToggleButton>
-        <ToggleButton value="rounded">Rounded</ToggleButton>
-        <ToggleButton value="pill">Pill</ToggleButton>
-      </RadioGroupInput>
+      <SliderInput
+        label="Border radius"
+        iconLabel={<RoundedCornerOutlined />}
+        units="px"
+        step={4}
+        marks
+        min={0}
+        max={64}
+        defaultValue={borderRadius}
+        onChange={(borderRadius) => updateData({ ...data, props: { ...data.props, borderRadius } })}
+      />
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <ColorInput

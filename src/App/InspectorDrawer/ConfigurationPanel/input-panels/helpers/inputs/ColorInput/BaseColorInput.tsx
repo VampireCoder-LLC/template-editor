@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { AddOutlined, CloseOutlined } from '@mui/icons-material';
+import { CloseOutlined, PaletteOutlined } from '@mui/icons-material';
 import { ButtonBase, InputLabel, Menu, Stack } from '@mui/material';
 
 import Picker from './Picker';
@@ -59,7 +59,7 @@ export default function ColorInput({ label, defaultValue, onChange, nullable }: 
     }
     return (
       <ButtonBase onClick={handleClickOpen} sx={{ ...BUTTON_SX }}>
-        <AddOutlined fontSize="small" />
+        <PaletteOutlined fontSize="small" />
       </ButtonBase>
     );
   };

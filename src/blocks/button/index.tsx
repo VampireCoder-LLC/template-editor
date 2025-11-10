@@ -82,6 +82,7 @@ export const ButtonPropsSchema = z.object({
       size: z.enum(['x-small', 'small', 'large', 'medium']).optional().nullable(),
       text: z.string().optional().nullable(),
       url: z.string().optional().nullable(),
+      borderRadius: z.number().min(0).max(64).optional().nullable(),
     })
     .optional()
     .nullable(),
@@ -90,6 +91,11 @@ export const ButtonPropsSchema = z.object({
 export type ButtonProps = z.infer<typeof ButtonPropsSchema>;
 
 function getRoundedCorners(props: ButtonProps['props']) {
+  // If custom border radius is set, use it
+  if (props?.borderRadius !== null && props?.borderRadius !== undefined) {
+    return props.borderRadius;
+  }
+
   const buttonStyle = props?.buttonStyle ?? ButtonPropsDefaults.buttonStyle;
 
   switch (buttonStyle) {

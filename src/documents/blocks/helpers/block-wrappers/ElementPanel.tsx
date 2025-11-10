@@ -314,8 +314,8 @@ export default function ElementPanel({ blockId }: Props) {
   return (
     <>
       <Paper sx={sx} onClick={(ev) => ev.stopPropagation()}>
-        {/* Template Fields Section - Always at the top */}
-        {templateFields.length > 0 && <TemplateFieldsSection fields={templateFields} />}
+        {/* Template Fields Section - Show for all blocks except Button */}
+        {templateFields.length > 0 && block.type !== 'Button' && <TemplateFieldsSection fields={templateFields} />}
 
         {/* Inspector Panel Content */}
         <Box sx={{ flex: 1, overflowY: 'auto', overflow: 'hidden' }}>

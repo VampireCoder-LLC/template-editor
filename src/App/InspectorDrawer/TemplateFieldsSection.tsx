@@ -62,21 +62,29 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
   /**
    * Stores the currently focused editable element and selection before clicking
    */
-  const handleMouseDown = () => {
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+
     const activeElement = document.activeElement as HTMLElement;
+    console.log('[TemplateFields] handleMouseDown - activeElement:', activeElement, 'contentEditable:', activeElement?.contentEditable);
 
     // Store the focused element if it's editable
     if (activeElement instanceof HTMLTextAreaElement || activeElement instanceof HTMLInputElement) {
       focusedElementRef.current = activeElement;
       savedRangeRef.current = null;
+      console.log('[TemplateFields] Stored textarea/input element');
     } else if (activeElement?.contentEditable === 'true') {
       focusedElementRef.current = activeElement;
 
       // Save the current selection/range for contentEditable elements
       const selection = window.getSelection();
+      console.log('[TemplateFields] Selection:', selection, 'rangeCount:', selection?.rangeCount);
       if (selection && selection.rangeCount > 0) {
         savedRangeRef.current = selection.getRangeAt(0).cloneRange();
+        console.log('[TemplateFields] Saved range:', savedRangeRef.current);
       }
+    } else {
+      console.log('[TemplateFields] Element is not editable');
     }
   };
 
@@ -87,25 +95,35 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
     const handlebarsText = `{{${fieldName}}}`;
     const focusedElement = focusedElementRef.current;
 
+    console.log('[TemplateFields] handleInsertField - fieldName:', fieldName);
+    console.log('[TemplateFields] focusedElement:', focusedElement);
+    console.log('[TemplateFields] savedRange:', savedRangeRef.current);
+
     if (!focusedElement) {
+      console.log('[TemplateFields] No focused element stored');
       return;
     }
 
     // Insert into the stored focused element
     if (focusedElement instanceof HTMLTextAreaElement || focusedElement instanceof HTMLInputElement) {
+      console.log('[TemplateFields] Inserting into textarea/input');
       insertTextInTextarea(focusedElement, handlebarsText);
     } else if (focusedElement.contentEditable === 'true') {
+      console.log('[TemplateFields] Inserting into contentEditable');
       // Restore focus to the contentEditable element
       focusedElement.focus();
 
       // Restore the saved selection/range
       const selection = window.getSelection();
+      console.log('[TemplateFields] Current selection after focus:', selection, 'rangeCount:', selection?.rangeCount);
       if (selection && savedRangeRef.current) {
+        console.log('[TemplateFields] Restoring saved range');
         selection.removeAllRanges();
         selection.addRange(savedRangeRef.current);
       }
 
-      insertTextAtCursor(handlebarsText, focusedElement);
+      const result = insertTextAtCursor(handlebarsText, focusedElement);
+      console.log('[TemplateFields] insertTextAtCursor result:', result);
     }
   };
 
@@ -143,8 +161,14 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
           {filteredFields.map((field) => (
             <ListItem key={field.name} disablePadding sx={{ mb: 0.5 }}>
               <ListItemButton
-                onMouseDown={handleMouseDown}
-                onClick={() => handleInsertField(field.name)}
+                onMouseDown={(e) => {
+                  handleMouseDown(e as any);
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleInsertField(field.name);
+                }}
                 sx={{
                   borderRadius: 1,
                   border: '1px solid #e0e0e0',
