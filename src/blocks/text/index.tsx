@@ -105,8 +105,6 @@ export function Text({ style, props }: TextProps) {
   };
 
   const text = props?.text ?? TextPropsDefaults.text;
-  if (props?.markdown) {
-    return <EmailMarkdown style={wStyle} markdown={text} />;
-  }
-  return <div style={wStyle}>{text}</div>;
+  // Always render markdown for Text blocks (automatic markdown support)
+  return <EmailMarkdown style={wStyle} markdown={text} />;
 }

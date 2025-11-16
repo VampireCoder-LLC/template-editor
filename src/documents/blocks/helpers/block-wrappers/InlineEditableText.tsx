@@ -105,21 +105,48 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
     };
   }, []);
 
+  // When editing, show raw text; when not editing, show rendered component
+  if (isEditing) {
+    return (
+      <Box
+        ref={contentRef}
+        onClick={handleClick}
+        contentEditable={true}
+        suppressContentEditableWarning
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        sx={{
+          cursor: 'text',
+          outline: '2px solid #0079cc',
+          outlineOffset: '-2px',
+          wordWrap: 'break-word',
+          whiteSpace: 'pre-wrap',
+          boxSizing: 'border-box',
+          // Apply same padding/styling as the rendered component for consistency
+          padding: block?.data?.style?.padding
+            ? `${block.data.style.padding.top}px ${block.data.style.padding.right}px ${block.data.style.padding.bottom}px ${block.data.style.padding.left}px`
+            : undefined,
+          color: block?.data?.style?.color ?? undefined,
+          backgroundColor: block?.data?.style?.backgroundColor ?? undefined,
+          fontSize: block?.data?.style?.fontSize ?? undefined,
+          fontFamily: block?.data?.style?.fontFamily ?? undefined,
+          fontWeight: block?.data?.style?.fontWeight ?? undefined,
+          fontStyle: block?.data?.style?.fontStyle ?? undefined,
+          textAlign: block?.data?.style?.textAlign ?? undefined,
+        }}
+      >
+        {currentText}
+      </Box>
+    );
+  }
+
   return (
     <Box
-      ref={contentRef}
       onClick={handleClick}
-      contentEditable={isEditing}
-      suppressContentEditableWarning
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
       sx={{
         cursor: isSelected ? 'text' : 'default',
         '&:hover': isSelected ? { opacity: 0.8 } : {},
-        outline: isEditing ? '2px solid #0079cc' : 'none',
-        outlineOffset: isEditing ? '-2px' : '0',
         wordWrap: 'break-word',
-        whiteSpace: isEditing ? 'pre-wrap' : 'normal',
         boxSizing: 'border-box',
       }}
     >
