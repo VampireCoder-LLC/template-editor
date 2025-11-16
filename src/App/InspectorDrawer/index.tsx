@@ -1,13 +1,11 @@
-import React from 'react';
-
-import { Box, Drawer, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 
 import { setSidebarTab, useInspectorDrawerOpen, useSelectedBlockId, useSelectedSidebarTab } from '../../documents/editor/EditorContext';
 
 import ConfigurationPanel from './ConfigurationPanel';
 import TemplateFieldsSection, { TemplateField } from './TemplateFieldsSection';
 
-export const INSPECTOR_DRAWER_WIDTH = 320;
+export const INSPECTOR_DRAWER_WIDTH = 400;
 
 interface InspectorDrawerProps {
   templateFields?: (string | TemplateField)[];
@@ -27,23 +25,24 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
     }
   };
 
+  if (!inspectorDrawerOpen) {
+    return null;
+  }
+
   return (
-    <Drawer
-      variant="persistent"
-      anchor="right"
-      open={inspectorDrawerOpen}
+    <Box
       sx={{
-        width: inspectorDrawerOpen ? INSPECTOR_DRAWER_WIDTH : 0,
+        width: INSPECTOR_DRAWER_WIDTH,
+        height: '100%',
         flexShrink: 0,
-        '& .MuiDrawer-paper': {
-          width: INSPECTOR_DRAWER_WIDTH,
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-          position: 'absolute',
-          height: '100%',
-        },
+        borderLeft: '1px solid',
+        borderColor: 'divider',
+        backgroundColor: 'background.paper',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 49, borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ height: 49, borderBottom: 1, borderColor: 'divider' }}>
         <Box px={2}>
           <Tabs value={selectedSidebarTab} onChange={(_, v) => setSidebarTab(v)}>
             {selectedBlockId && <Tab value="block-configuration" label="Configuration" />}
@@ -51,10 +50,34 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
           </Tabs>
         </Box>
       </Box>
-      <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 'calc(100% - 49px)', overflow: 'auto' }}>
+      <Box
+        sx={{
+          height: 'calc(100% - 49px)',
+          overflowX: 'hidden',
+          overflowY: 'auto',
+          // Custom scrollbar styling - thin, auto-hide, fade-out
+          '&::-webkit-scrollbar': {
+            width: '6px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: 'rgba(0, 0, 0, 0.2)',
+            borderRadius: '3px',
+            transition: 'background 0.3s ease',
+          },
+          '&::-webkit-scrollbar-thumb:hover': {
+            background: 'rgba(0, 0, 0, 0.4)',
+          },
+          // Firefox scrollbar styling
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgba(0, 0, 0, 0.2) transparent',
+        }}
+      >
         {/* Main Panel Content */}
         {renderCurrentSidebarPanel()}
       </Box>
-    </Drawer>
+    </Box>
   );
 }

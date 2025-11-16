@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { TStyle } from '../../../../../../documents/blocks/helpers/TStyle';
 
 import SingleStylePropertyPanel from './SingleStylePropertyPanel';
@@ -38,42 +38,42 @@ export default function MultiStylePropertyPanel({ names, value, onChange }: Mult
         // Render color and backgroundColor side-by-side
         if (hasColorPair && name === 'color') {
           return (
-            <Grid container spacing={2} key="color-pair">
-              <Grid item xs={6} sx={{ width: '100%', marginLeft: '-1rem;' }}>
+            <Stack direction="row" spacing={2} key="color-pair">
+              <Box sx={{ flex: 1 }}>
                 <SingleStylePropertyPanel name="color" value={value || {}} onChange={onChange} />
-              </Grid>
-              <Grid item xs={6} sx={{ width: '100%' }}>
+              </Box>
+              <Box sx={{ flex: 1 }}>
                 <SingleStylePropertyPanel name="backgroundColor" value={value || {}} onChange={onChange} />
-              </Grid>
-            </Grid>
+              </Box>
+            </Stack>
           );
         }
 
         // Render fontFamily and fontSize side-by-side
         if (hasFontPair && name === 'fontFamily') {
           return (
-            <Grid container spacing={2} key="font-pair">
-              <Grid item xs={6} sx={{ width: '100%', marginLeft: '-1rem;' }}>
+            <Stack direction="row" spacing={2} key="font-pair">
+              <Box sx={{ flex: 1 }}>
                 <SingleStylePropertyPanel name="fontFamily" value={value || {}} onChange={onChange} />
-              </Grid>
-              <Grid item xs={6} sx={{ width: '100%' }}>
+              </Box>
+              <Box sx={{ flex: 1 }}>
                 <SingleStylePropertyPanel name="fontSize" value={value || {}} onChange={onChange} />
-              </Grid>
-            </Grid>
+              </Box>
+            </Stack>
           );
         }
 
         // Render backgroundColor and borderColor side-by-side (for Container blocks)
         if (hasBackgroundBorderColorPair && name === 'backgroundColor') {
           return (
-            <Grid container spacing={2} key="background-border-color-pair">
-              <Grid item xs={6} sx={{ width: '100%', marginLeft: '-1rem;' }}>
+            <Stack direction="row" spacing={2} key="background-border-color-pair">
+              <Box sx={{ flex: 1 }}>
                 <SingleStylePropertyPanel name="backgroundColor" value={value || {}} onChange={onChange} />
-              </Grid>
-              <Grid item xs={6} sx={{ width: '100%' }}>
+              </Box>
+              <Box sx={{ flex: 1 }}>
                 <SingleStylePropertyPanel name="borderColor" value={value || {}} onChange={onChange} />
-              </Grid>
-            </Grid>
+              </Box>
+            </Stack>
           );
         }
 

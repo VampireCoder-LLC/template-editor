@@ -128,7 +128,7 @@ export default function TemplatePanel({
 
   return (
     <TemplateFieldsProvider fields={templateFields}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', position: 'relative' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <Stack
           sx={{
             height: 49,
@@ -169,8 +169,10 @@ export default function TemplatePanel({
             </Stack>
           </Stack>
         </Stack>
-        <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
-        <InspectorDrawer templateFields={templateFields} />
+        <Box sx={{ display: 'flex', height: 'calc(100vh - 49px)', overflow: 'hidden' }}>
+          <Box sx={{ flex: 1, overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
+          <InspectorDrawer templateFields={templateFields} />
+        </Box>
       </Box>
     </TemplateFieldsProvider>
   );

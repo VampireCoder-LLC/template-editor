@@ -5,7 +5,6 @@ import { Box, Typography } from '@mui/material';
 import { TEditorBlock } from '../../../documents/editor/core';
 import { setDocument, useDocument, useSelectedBlockId } from '../../../documents/editor/EditorContext';
 
-import BlockActions from './BlockActions';
 import AvatarSidebarPanel from './input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './input-panels/ButtonSidebarPanel';
 import ColumnsContainerSidebarPanel from './input-panels/ColumnsContainerSidebarPanel';
@@ -41,17 +40,6 @@ export default function ConfigurationPanel() {
   const setBlock = (conf: TEditorBlock) => setDocument({ [selectedBlockId]: conf });
   const { data, type } = block;
 
-  const getBlockTypeLabel = () => {
-    switch (type) {
-      case 'ColumnsContainer':
-        return 'Columns';
-      case 'EmailLayout':
-        return 'Email Layout';
-      default:
-        return type;
-    }
-  };
-
   const renderPanel = () => {
     switch (type) {
       case 'Avatar':
@@ -85,18 +73,8 @@ export default function ConfigurationPanel() {
 
   return (
     <>
-      {/* Block Type Heading */}
-      <Box sx={{ p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
-        <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1rem' }}>
-          {getBlockTypeLabel()}
-        </Typography>
-      </Box>
-
       {/* Configuration Panel */}
       {renderPanel()}
-
-      {/* Block Actions */}
-      {type !== 'EmailLayout' && <BlockActions />}
     </>
   );
 }

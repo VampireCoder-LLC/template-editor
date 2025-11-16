@@ -5,6 +5,8 @@ import { Box } from '@mui/material';
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
 import { setSelectedBlockId, useSelectedBlockId, useDocument } from '../../../editor/EditorContext';
 
+import BlockActionsMenu from './BlockActionsMenu';
+
 type TEditorBlockWrapperProps = {
   children: JSX.Element;
 };
@@ -22,6 +24,9 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
   } else if (mouseInside) {
     outline = '2px solid rgba(0,121,204, 0.3)';
   }
+
+  // Show actions menu for selected block (except EmailLayout root block)
+  const showActionsMenu = selectedBlockId === blockId && block?.type !== 'EmailLayout';
 
   return (
     <Box
@@ -49,6 +54,7 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
       }}
     >
       {children}
+      {showActionsMenu && <BlockActionsMenu blockId={blockId} />}
     </Box>
   );
 }
