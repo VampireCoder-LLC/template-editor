@@ -35,6 +35,9 @@
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .controls label {
@@ -44,6 +47,8 @@
   font-size: 1.1em;
   color: #333;
   cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .controls input[type='checkbox'] {

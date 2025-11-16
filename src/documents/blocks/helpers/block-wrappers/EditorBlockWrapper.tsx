@@ -4,16 +4,12 @@ import { Box } from '@mui/material';
 
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
 import { setSelectedBlockId, useSelectedBlockId, useDocument } from '../../../editor/EditorContext';
-import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
-
-import ElementPanel from './ElementPanel';
 
 type TEditorBlockWrapperProps = {
   children: JSX.Element;
 };
 
 export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProps) {
-  const templateFields = useTemplateFields();
   const selectedBlockId = useSelectedBlockId();
   const [mouseInside, setMouseInside] = useState(false);
   const blockId = useCurrentBlockId();
@@ -26,13 +22,6 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
   } else if (mouseInside) {
     outline = '2px solid rgba(0,121,204, 0.3)';
   }
-
-  const renderMenu = () => {
-    if (selectedBlockId !== blockId) {
-      return null;
-    }
-    return <ElementPanel blockId={blockId} templateFields={templateFields} />;
-  };
 
   return (
     <Box
@@ -59,7 +48,6 @@ export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProp
         ev.preventDefault();
       }}
     >
-      {renderMenu()}
       {children}
     </Box>
   );

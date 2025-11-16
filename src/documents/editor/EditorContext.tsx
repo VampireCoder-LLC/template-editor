@@ -21,7 +21,7 @@ type TValue = {
   document: TEditorConfiguration;
 
   selectedBlockId: string | null;
-  selectedSidebarTab: 'block-configuration' | 'styles';
+  selectedSidebarTab: 'block-configuration' | 'template-fields';
   selectedMainTab: 'editor' | 'preview' | 'json' | 'html';
   selectedScreenSize: 'desktop' | 'mobile';
 
@@ -31,7 +31,7 @@ type TValue = {
 const editorStateStore = create<TValue>(() => ({
   document: getInitialConfiguration(),
   selectedBlockId: null,
-  selectedSidebarTab: 'styles',
+  selectedSidebarTab: 'block-configuration',
   selectedMainTab: 'editor',
   selectedScreenSize: 'desktop',
 
@@ -67,10 +67,12 @@ export function useInspectorDrawerOpen() {
 }
 
 export function setSelectedBlockId(selectedBlockId: TValue['selectedBlockId']) {
-  const selectedSidebarTab = selectedBlockId === null ? 'styles' : 'block-configuration';
+  const selectedSidebarTab = selectedBlockId === null ? 'block-configuration' : 'block-configuration';
+  const inspectorDrawerOpen = selectedBlockId !== null;
   return editorStateStore.setState({
     selectedBlockId,
     selectedSidebarTab,
+    inspectorDrawerOpen,
   });
 }
 
@@ -80,11 +82,13 @@ export function setSidebarTab(selectedSidebarTab: TValue['selectedSidebarTab']) 
 
 export function resetDocument(document: TValue['document'], selectedBlockId?: string | null) {
   const finalSelectedBlockId = selectedBlockId ?? null;
-  const selectedSidebarTab = finalSelectedBlockId === null ? 'styles' : 'block-configuration';
+  const selectedSidebarTab = finalSelectedBlockId === null ? 'block-configuration' : 'block-configuration';
+  const inspectorDrawerOpen = finalSelectedBlockId !== null;
   return editorStateStore.setState({
     document,
     selectedSidebarTab,
     selectedBlockId: finalSelectedBlockId,
+    inspectorDrawerOpen,
   });
 }
 

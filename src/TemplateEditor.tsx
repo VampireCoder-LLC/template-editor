@@ -42,6 +42,8 @@ export interface TemplateEditorProps {
   onSave?: (output: TemplateSaveOutput) => void;
   /** Show JSON tab in the editor (default: false) */
   showJsonTab?: boolean;
+  /** Show save button (default: true) */
+  showSaveButton?: boolean;
   /** Show download button (default: true) */
   showDownloadButton?: boolean;
   /** Show import button (default: true) */
@@ -61,6 +63,7 @@ function TemplateEditorContent({
   initialJson,
   onSave,
   showJsonTab = false,
+  showSaveButton = true,
   showDownloadButton = true,
   showImportButton = true,
   showSettingsButton = true,
@@ -103,6 +106,7 @@ function TemplateEditorContent({
     >
       <TemplatePanel
         showJsonTab={showJsonTab}
+        showSaveButton={showSaveButton}
         showDownloadButton={showDownloadButton}
         showImportButton={showImportButton}
         showSettingsButton={showSettingsButton}

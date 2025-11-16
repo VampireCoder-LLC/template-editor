@@ -132,12 +132,7 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
   }
 
   return (
-    <Box sx={{ p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
-      {/* Header */}
-      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1.5 }}>
-        Template Fields
-      </Typography>
-
+    <Box sx={{ p: 2 }}>
       {/* Search Field */}
       <TextField
         placeholder="Search fields..."

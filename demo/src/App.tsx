@@ -54,6 +54,9 @@ const TEMPLATE_FIELDS: TemplateField[] = [
 function App() {
   const [saveOutput, setSaveOutput] = useState<TemplateSaveOutput | null>(null)
   const [showJsonTab, setShowJsonTab] = useState(false)
+  const [showSaveButton, setShowSaveButton] = useState(true)
+  const [showImportButton, setShowImportButton] = useState(false)
+  const [showDownloadButton, setShowDownloadButton] = useState(false)
 
   const handleSave = (output: TemplateSaveOutput) => {
     console.log('Template saved:', output)
@@ -71,6 +74,30 @@ function App() {
           />
           Show JSON Tab
         </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showSaveButton}
+            onChange={(e) => setShowSaveButton(e.target.checked)}
+          />
+          Show Save Button
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showImportButton}
+            onChange={(e) => setShowImportButton(e.target.checked)}
+          />
+          Show Import Button
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showDownloadButton}
+            onChange={(e) => setShowDownloadButton(e.target.checked)}
+          />
+          Show Export Button
+        </label>
       </div>
 
       <div className="editor-container">
@@ -78,8 +105,9 @@ function App() {
           initialJson={SAMPLE_TEMPLATE}
           onSave={handleSave}
           showJsonTab={showJsonTab}
-          showDownloadButton={true}
-          showImportButton={true}
+          showSaveButton={showSaveButton}
+          showDownloadButton={showDownloadButton}
+          showImportButton={showImportButton}
           showSettingsButton={true}
           templateFields={TEMPLATE_FIELDS}
           height="800px"
