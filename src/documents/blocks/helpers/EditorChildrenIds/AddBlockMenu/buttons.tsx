@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 
 import {
-  AccountCircleOutlined,
   Crop32Outlined,
   HMobiledataOutlined,
   HorizontalRuleOutlined,
@@ -21,6 +20,46 @@ type TButtonProps = {
   genBlock: () => TEditorBlock;
 };
 export const BUTTONS: TButtonProps[] = [
+  {
+    label: 'Container',
+    icon: <LibraryAddOutlined />,
+    genBlock: () => ({
+      type: 'Container',
+      data: {
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+      },
+    }),
+  },
+  {
+    label: 'Columns',
+    icon: <ViewColumnOutlined />,
+    genBlock: () => ({
+      type: 'ColumnsContainer',
+      data: {
+        props: {
+          columnsGap: 16,
+          columnsCount: 3,
+          columns: [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }],
+        },
+        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
+      },
+    }),
+  },
+  {
+    label: 'HTML',
+    icon: <HtmlOutlined />,
+    genBlock: () => ({
+      type: 'Html',
+      data: {
+        props: { contents: '<strong>Hello world</strong>' },
+        style: {
+          fontSize: 16,
+          textAlign: null,
+          padding: { top: 16, bottom: 16, left: 24, right: 24 },
+        },
+      },
+    }),
+  },
   {
     label: 'Heading',
     icon: <HMobiledataOutlined />,
@@ -48,21 +87,6 @@ export const BUTTONS: TButtonProps[] = [
       },
     }),
   },
-
-  {
-    label: 'Button',
-    icon: <SmartButtonOutlined />,
-    genBlock: () => ({
-      type: 'Button',
-      data: {
-        props: {
-          text: 'Button',
-          url: 'https://www.vampirecoder.com',
-        },
-        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
-      },
-    }),
-  },
   {
     label: 'Image',
     icon: <ImageOutlined />,
@@ -80,29 +104,16 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Avatar',
-    icon: <AccountCircleOutlined />,
+    label: 'Button',
+    icon: <SmartButtonOutlined />,
     genBlock: () => ({
-      type: 'Avatar',
+      type: 'Button',
       data: {
         props: {
-          imageUrl: 'https://ui-avatars.com/api/?size=128',
-          shape: 'circle',
+          text: 'Button',
+          url: 'https://www.vampirecoder.com',
         },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
-      },
-    }),
-  },
-  {
-    label: 'Divider',
-    icon: <HorizontalRuleOutlined />,
-    genBlock: () => ({
-      type: 'Divider',
-      data: {
-        style: { padding: { top: 16, right: 0, bottom: 16, left: 0 } },
-        props: {
-          lineColor: '#CCCCCC',
-        },
       },
     }),
   },
@@ -115,42 +126,15 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Html',
-    icon: <HtmlOutlined />,
+    label: 'Divider',
+    icon: <HorizontalRuleOutlined />,
     genBlock: () => ({
-      type: 'Html',
+      type: 'Divider',
       data: {
-        props: { contents: '<strong>Hello world</strong>' },
-        style: {
-          fontSize: 16,
-          textAlign: null,
-          padding: { top: 16, bottom: 16, left: 24, right: 24 },
-        },
-      },
-    }),
-  },
-  {
-    label: 'Columns',
-    icon: <ViewColumnOutlined />,
-    genBlock: () => ({
-      type: 'ColumnsContainer',
-      data: {
+        style: { padding: { top: 16, right: 0, bottom: 16, left: 0 } },
         props: {
-          columnsGap: 16,
-          columnsCount: 3,
-          columns: [{ childrenIds: [] }, { childrenIds: [] }, { childrenIds: [] }],
+          lineColor: '#CCCCCC',
         },
-        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
-      },
-    }),
-  },
-  {
-    label: 'Container',
-    icon: <LibraryAddOutlined />,
-    genBlock: () => ({
-      type: 'Container',
-      data: {
-        style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
     }),
   },

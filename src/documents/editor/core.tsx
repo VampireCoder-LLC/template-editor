@@ -1,7 +1,6 @@
 import React from 'react';
 import { z } from 'zod';
 
-import { Avatar, AvatarPropsSchema } from '../../blocks/avatar';
 import { Button, ButtonPropsSchema } from '../../blocks/button';
 import { Divider, DividerPropsSchema } from '../../blocks/divider';
 import { Heading, HeadingPropsSchema } from '../../blocks/heading';
@@ -25,14 +24,6 @@ import EditorBlockWrapper from '../blocks/helpers/block-wrappers/EditorBlockWrap
 import InlineEditableText from '../blocks/helpers/block-wrappers/InlineEditableText';
 
 const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
-  Avatar: {
-    schema: AvatarPropsSchema,
-    Component: (props) => (
-      <EditorBlockWrapper>
-        <Avatar {...props} />
-      </EditorBlockWrapper>
-    ),
-  },
   Button: {
     schema: ButtonPropsSchema,
     Component: (props) => (

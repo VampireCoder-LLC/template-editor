@@ -66,7 +66,7 @@ type Props = {
 
 // Helper function to determine if a block type supports color properties
 function supportsColorProperties(blockType: string): boolean {
-  const colorSupportedTypes = ['Text', 'Heading', 'Button', 'Html', 'Avatar', 'Image', 'Divider'];
+  const colorSupportedTypes = ['Text', 'Heading', 'Button', 'Html', 'Image', 'Divider'];
   return colorSupportedTypes.includes(blockType);
 }
 

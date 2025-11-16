@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, SxProps, Typography } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 type BlockMenuButtonProps = {
   label: string;
@@ -8,29 +8,23 @@ type BlockMenuButtonProps = {
   onClick: () => void;
 };
 
-const BUTTON_SX: SxProps = { p: 1.5, display: 'flex', flexDirection: 'column' };
-const ICON_SX: SxProps = {
-  mb: 0.75,
-  width: '100%',
-  bgcolor: 'cadet.200',
-  display: 'flex',
-  justifyContent: 'center',
-  p: 1,
-  border: '1px solid',
-  borderColor: 'cadet.300',
-};
-
 export default function BlockTypeButton({ label, icon, onClick }: BlockMenuButtonProps) {
   return (
-    <Button
-      sx={BUTTON_SX}
+    <ListItemButton
       onClick={(ev) => {
         ev.stopPropagation();
         onClick();
       }}
+      sx={{
+        py: 1.5,
+        px: 2,
+        '&:hover': {
+          bgcolor: 'action.hover',
+        },
+      }}
     >
-      <Box sx={ICON_SX}>{icon}</Box>
-      <Typography variant="body2">{label}</Typography>
-    </Button>
+      <ListItemIcon sx={{ minWidth: 40, color: 'text.secondary' }}>{icon}</ListItemIcon>
+      <ListItemText primary={label} primaryTypographyProps={{ variant: 'body2' }} />
+    </ListItemButton>
   );
 }

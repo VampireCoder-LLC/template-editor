@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Menu } from '@mui/material';
+import { Menu, Stack } from '@mui/material';
 
 import { TEditorBlock } from '../../../../editor/core';
 
@@ -36,14 +36,15 @@ export default function BlocksMenu({ anchorEl, setAnchorEl, onSelect }: BlocksMe
       PaperProps={{
         sx: {
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+          minWidth: 240,
         },
       }}
     >
-      <Box sx={{ p: 1, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+      <Stack spacing={0}>
         {BUTTONS.map((k, i) => (
           <BlockButton key={i} label={k.label} icon={k.icon} onClick={() => onClick(k.genBlock())} />
         ))}
-      </Box>
+      </Stack>
     </Menu>
   );
 }

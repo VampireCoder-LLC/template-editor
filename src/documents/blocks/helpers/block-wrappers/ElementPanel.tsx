@@ -26,7 +26,6 @@ import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
 import TemplateFieldsSection from '../../../../App/InspectorDrawer/TemplateFieldsSection';
 
-import AvatarSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ButtonSidebarPanel';
 import ColumnsContainerSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ColumnsContainerSidebarPanel';
 import ContainerSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ContainerSidebarPanel';
@@ -282,8 +281,6 @@ export default function ElementPanel({ blockId }: Props) {
     const { data, type } = block;
 
     switch (type) {
-      case 'Avatar':
-        return <AvatarSidebarPanel key={blockId} data={data} setData={(data) => setBlock({ type, data })} />;
       case 'Button':
         return <ButtonSidebarPanel key={blockId} data={data} setData={(data) => setBlock({ type, data })} />;
       case 'ColumnsContainer':

@@ -1,7 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { z } from 'zod';
 
-import { Avatar, AvatarPropsSchema } from '../../blocks/avatar';
 import { Button, ButtonPropsSchema } from '../../blocks/button';
 import { Divider, DividerPropsSchema } from '../../blocks/divider';
 import { Heading, HeadingPropsSchema } from '../../blocks/heading';
@@ -42,10 +41,6 @@ const READER_DICTIONARY = buildBlockConfigurationDictionary({
     Component: EmailLayoutReader,
   },
   //
-  Avatar: {
-    schema: AvatarPropsSchema,
-    Component: Avatar,
-  },
   Button: {
     schema: ButtonPropsSchema,
     Component: Button,
