@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { TextProps, TextPropsSchema } from '../../../../blocks/text';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
-import BooleanInput from './helpers/inputs/BooleanInput';
-import TextInput from './helpers/inputs/TextInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
 
 type TextSidebarPanelProps = {
@@ -26,12 +24,6 @@ export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProp
 
   return (
     <BaseSidebarPanel title="Text block">
-      <BooleanInput
-        label="Markdown"
-        defaultValue={data.props?.markdown ?? false}
-        onChange={(markdown) => updateData({ ...data, props: { ...data.props, markdown } })}
-      />
-
       <MultiStylePropertyPanel
         names={['color', 'backgroundColor', 'fontFamily', 'fontSize', 'fontStyle', 'textAlign', 'padding']}
         value={data.style}
