@@ -1,6 +1,6 @@
 import { Box, Tab, Tabs } from '@mui/material';
 
-import { setSidebarTab, useInspectorDrawerOpen, useSelectedBlockId, useSelectedSidebarTab } from '../../documents/editor/EditorContext';
+import { setSidebarTab, useInspectorDrawerOpen, useSelectedBlockId, useSelectedSidebarTab, useDocument } from '../../documents/editor/EditorContext';
 
 import ConfigurationPanel from './ConfigurationPanel';
 import TemplateFieldsSection, { TemplateField } from './TemplateFieldsSection';
@@ -15,6 +15,17 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
   const selectedSidebarTab = useSelectedSidebarTab();
   const inspectorDrawerOpen = useInspectorDrawerOpen();
   const selectedBlockId = useSelectedBlockId();
+  const document = useDocument();
+
+  // Get the selected block's type
+  const selectedBlock = selectedBlockId ? document[selectedBlockId] : null;
+  const selectedBlockType = selectedBlock?.type;
+
+  // Only show Template Fields tab for Html, Text, and Heading blocks
+  const showTemplateFieldsTab =
+    selectedBlockId &&
+    templateFields.length > 0 &&
+    (selectedBlockType === 'Html' || selectedBlockType === 'Text' || selectedBlockType === 'Heading');
 
   const renderCurrentSidebarPanel = () => {
     switch (selectedSidebarTab) {
@@ -46,7 +57,7 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
         <Box px={2}>
           <Tabs value={selectedSidebarTab} onChange={(_, v) => setSidebarTab(v)}>
             {selectedBlockId && <Tab value="block-configuration" label="Configuration" />}
-            {selectedBlockId && templateFields.length > 0 && <Tab value="template-fields" label="Template Fields" />}
+            {showTemplateFieldsTab && <Tab value="template-fields" label="Template Fields" />}
           </Tabs>
         </Box>
       </Box>
