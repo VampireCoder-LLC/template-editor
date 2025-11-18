@@ -778,7 +778,7 @@ var W$ = /* @__PURE__ */ function() {
       return (a = n.parentNode) == null ? void 0 : a.removeChild(n);
     }), this.tags = [], this.ctr = 0;
   }, e;
-}(), ya = "-ms-", Wg = "-moz-", Br = "-webkit-", iM = "comm", aD = "rule", iD = "decl", j$ = "@import", oM = "@keyframes", K$ = "@layer", Q$ = Math.abs, G_ = String.fromCharCode, X$ = Object.assign;
+}(), ya = "-ms-", Wg = "-moz-", Ur = "-webkit-", iM = "comm", aD = "rule", iD = "decl", j$ = "@import", oM = "@keyframes", K$ = "@layer", Q$ = Math.abs, G_ = String.fromCharCode, X$ = Object.assign;
 function Z$(e, t) {
   return sa(e, 0) ^ 45 ? (((t << 2 ^ sa(e, 0)) << 2 ^ sa(e, 1)) << 2 ^ sa(e, 2)) << 2 ^ sa(e, 3) : 0;
 }
@@ -788,7 +788,7 @@ function sM(e) {
 function J$(e, t) {
   return (e = t.exec(e)) ? e[0] : e;
 }
-function Ur(e, t, r) {
+function $r(e, t, r) {
   return e.replace(t, r);
 }
 function BC(e, t) {
@@ -925,7 +925,7 @@ function Pg(e, t, r, n, a, i, s, l, u) {
     switch (b = D, D = Ei()) {
       case 40:
         if (b != 108 && sa(H, E - 1) == 58) {
-          BC(H += Ur(wg(D), "&", "&\f"), "&\f") != -1 && (O = -1);
+          BC(H += $r(wg(D), "&", "&\f"), "&\f") != -1 && (O = -1);
           break;
         }
       case 34:
@@ -962,7 +962,7 @@ function Pg(e, t, r, n, a, i, s, l, u) {
           case 125:
             R = 0;
           case 59 + h:
-            O == -1 && (H = Ur(H, /\f/g, "")), y > 0 && ko(H) - E && qh(y > 32 ? HR(H + ";", n, r, E - 1) : HR(Ur(H, " ", "") + ";", n, r, E - 2), u);
+            O == -1 && (H = $r(H, /\f/g, "")), y > 0 && ko(H) - E && qh(y > 32 ? HR(H + ";", n, r, E - 1) : HR($r(H, " ", "") + ";", n, r, E - 2), u);
             break;
           case 59:
             H += ";";
@@ -1012,7 +1012,7 @@ function Pg(e, t, r, n, a, i, s, l, u) {
 function GR(e, t, r, n, a, i, s, l, u, f, h) {
   for (var E = a - 1, S = a === 0 ? i : [""], y = oD(S), b = 0, C = 0, R = 0; b < n; ++b)
     for (var O = 0, D = af(e, E + 1, E = Q$(C = s[b])), k = e; O < y; ++O)
-      (k = sM(C > 0 ? S[O] + " " + D : Ur(D, /&\f/g, S[O]))) && (u[R++] = k);
+      (k = sM(C > 0 ? S[O] + " " + D : $r(D, /&\f/g, S[O]))) && (u[R++] = k);
   return V_(e, t, r, a === 0 ? aD : l, u, f, h);
 }
 function lG(e, t, r) {
@@ -1111,7 +1111,7 @@ var pG = function(t, r, n) {
 function pM(e, t) {
   switch (Z$(e, t)) {
     case 5103:
-      return Br + "print-" + e + e;
+      return Ur + "print-" + e + e;
     case 5737:
     case 4201:
     case 3177:
@@ -1137,44 +1137,44 @@ function pM(e, t) {
     case 5365:
     case 5621:
     case 3829:
-      return Br + e + e;
+      return Ur + e + e;
     case 5349:
     case 4246:
     case 4810:
     case 6968:
     case 2756:
-      return Br + e + Wg + e + ya + e + e;
+      return Ur + e + Wg + e + ya + e + e;
     case 6828:
     case 4268:
-      return Br + e + ya + e + e;
+      return Ur + e + ya + e + e;
     case 6165:
-      return Br + e + ya + "flex-" + e + e;
+      return Ur + e + ya + "flex-" + e + e;
     case 5187:
-      return Br + e + Ur(e, /(\w+).+(:[^]+)/, Br + "box-$1$2" + ya + "flex-$1$2") + e;
+      return Ur + e + $r(e, /(\w+).+(:[^]+)/, Ur + "box-$1$2" + ya + "flex-$1$2") + e;
     case 5443:
-      return Br + e + ya + "flex-item-" + Ur(e, /flex-|-self/, "") + e;
+      return Ur + e + ya + "flex-item-" + $r(e, /flex-|-self/, "") + e;
     case 4675:
-      return Br + e + ya + "flex-line-pack" + Ur(e, /align-content|flex-|-self/, "") + e;
+      return Ur + e + ya + "flex-line-pack" + $r(e, /align-content|flex-|-self/, "") + e;
     case 5548:
-      return Br + e + ya + Ur(e, "shrink", "negative") + e;
+      return Ur + e + ya + $r(e, "shrink", "negative") + e;
     case 5292:
-      return Br + e + ya + Ur(e, "basis", "preferred-size") + e;
+      return Ur + e + ya + $r(e, "basis", "preferred-size") + e;
     case 6060:
-      return Br + "box-" + Ur(e, "-grow", "") + Br + e + ya + Ur(e, "grow", "positive") + e;
+      return Ur + "box-" + $r(e, "-grow", "") + Ur + e + ya + $r(e, "grow", "positive") + e;
     case 4554:
-      return Br + Ur(e, /([^-])(transform)/g, "$1" + Br + "$2") + e;
+      return Ur + $r(e, /([^-])(transform)/g, "$1" + Ur + "$2") + e;
     case 6187:
-      return Ur(Ur(Ur(e, /(zoom-|grab)/, Br + "$1"), /(image-set)/, Br + "$1"), e, "") + e;
+      return $r($r($r(e, /(zoom-|grab)/, Ur + "$1"), /(image-set)/, Ur + "$1"), e, "") + e;
     case 5495:
     case 3959:
-      return Ur(e, /(image-set\([^]*)/, Br + "$1$`$1");
+      return $r(e, /(image-set\([^]*)/, Ur + "$1$`$1");
     case 4968:
-      return Ur(Ur(e, /(.+:)(flex-)?(.*)/, Br + "box-pack:$3" + ya + "flex-pack:$3"), /s.+-b[^;]+/, "justify") + Br + e + e;
+      return $r($r(e, /(.+:)(flex-)?(.*)/, Ur + "box-pack:$3" + ya + "flex-pack:$3"), /s.+-b[^;]+/, "justify") + Ur + e + e;
     case 4095:
     case 3583:
     case 4068:
     case 2532:
-      return Ur(e, /(.+)-inline(.+)/, Br + "$1$2") + e;
+      return $r(e, /(.+)-inline(.+)/, Ur + "$1$2") + e;
     case 8116:
     case 7059:
     case 5753:
@@ -1191,9 +1191,9 @@ function pM(e, t) {
         case 109:
           if (sa(e, t + 4) !== 45) break;
         case 102:
-          return Ur(e, /(.+:)(.+)-([^]+)/, "$1" + Br + "$2-$3$1" + Wg + (sa(e, t + 3) == 108 ? "$3" : "$2-$3")) + e;
+          return $r(e, /(.+:)(.+)-([^]+)/, "$1" + Ur + "$2-$3$1" + Wg + (sa(e, t + 3) == 108 ? "$3" : "$2-$3")) + e;
         case 115:
-          return ~BC(e, "stretch") ? pM(Ur(e, "stretch", "fill-available"), t) + e : e;
+          return ~BC(e, "stretch") ? pM($r(e, "stretch", "fill-available"), t) + e : e;
       }
       break;
     case 4949:
@@ -1201,21 +1201,21 @@ function pM(e, t) {
     case 6444:
       switch (sa(e, ko(e) - 3 - (~BC(e, "!important") && 10))) {
         case 107:
-          return Ur(e, ":", ":" + Br) + e;
+          return $r(e, ":", ":" + Ur) + e;
         case 101:
-          return Ur(e, /(.+:)([^;!]+)(;|!.+)?/, "$1" + Br + (sa(e, 14) === 45 ? "inline-" : "") + "box$3$1" + Br + "$2$3$1" + ya + "$2box$3") + e;
+          return $r(e, /(.+:)([^;!]+)(;|!.+)?/, "$1" + Ur + (sa(e, 14) === 45 ? "inline-" : "") + "box$3$1" + Ur + "$2$3$1" + ya + "$2box$3") + e;
       }
       break;
     case 5936:
       switch (sa(e, t + 11)) {
         case 114:
-          return Br + e + ya + Ur(e, /[svh]\w+-[tblr]{2}/, "tb") + e;
+          return Ur + e + ya + $r(e, /[svh]\w+-[tblr]{2}/, "tb") + e;
         case 108:
-          return Br + e + ya + Ur(e, /[svh]\w+-[tblr]{2}/, "tb-rl") + e;
+          return Ur + e + ya + $r(e, /[svh]\w+-[tblr]{2}/, "tb-rl") + e;
         case 45:
-          return Br + e + ya + Ur(e, /[svh]\w+-[tblr]{2}/, "lr") + e;
+          return Ur + e + ya + $r(e, /[svh]\w+-[tblr]{2}/, "lr") + e;
       }
-      return Br + e + ya + e + e;
+      return Ur + e + ya + e + e;
   }
   return e;
 }
@@ -1226,7 +1226,7 @@ var _G = function(t, r, n, a) {
       break;
     case oM:
       return Dd([om(t, {
-        value: Ur(t.value, "@", "@" + Br)
+        value: $r(t.value, "@", "@" + Ur)
       })], a);
     case aD:
       if (t.length) return eG(t.props, function(i) {
@@ -1234,15 +1234,15 @@ var _G = function(t, r, n, a) {
           case ":read-only":
           case ":read-write":
             return Dd([om(t, {
-              props: [Ur(i, /:(read-\w+)/, ":" + Wg + "$1")]
+              props: [$r(i, /:(read-\w+)/, ":" + Wg + "$1")]
             })], a);
           case "::placeholder":
             return Dd([om(t, {
-              props: [Ur(i, /:(plac\w+)/, ":" + Br + "input-$1")]
+              props: [$r(i, /:(plac\w+)/, ":" + Ur + "input-$1")]
             }), om(t, {
-              props: [Ur(i, /:(plac\w+)/, ":" + Wg + "$1")]
+              props: [$r(i, /:(plac\w+)/, ":" + Wg + "$1")]
             }), om(t, {
-              props: [Ur(i, /:(plac\w+)/, ya + "input-$1")]
+              props: [$r(i, /:(plac\w+)/, ya + "input-$1")]
             })], a);
         }
         return "";
@@ -13338,7 +13338,7 @@ process.env.NODE_ENV !== "production" && (I2.propTypes = {
    */
   variant: d.oneOf(["filled", "outlined", "standard"])
 });
-const $r = o6({
+const Lr = o6({
   createStyledComponent: st("div", {
     name: "MuiStack",
     slot: "Root",
@@ -13349,7 +13349,7 @@ const $r = o6({
     name: "MuiStack"
   })
 });
-process.env.NODE_ENV !== "production" && ($r.propTypes = {
+process.env.NODE_ENV !== "production" && (Lr.propTypes = {
   // ┌────────────────────────────── Warning ──────────────────────────────┐
   // │ These PropTypes are generated from the TypeScript type definitions. │
   // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
@@ -34792,15 +34792,15 @@ function gL(e) {
   ru = e;
 }
 var Gm = { exec: () => null };
-function Fr(e, t = "") {
+function Br(e, t = "") {
   let r = typeof e == "string" ? e : e.source, n = { replace: (a, i) => {
     let s = typeof i == "string" ? i : i.source;
     return s = s.replace(Ba.caret, "$1"), r = r.replace(a, s), n;
   }, getRegex: () => new RegExp(r, t) };
   return n;
 }
-var Ba = { codeRemoveIndent: /^(?: {1,4}| {0,3}\t)/gm, outputLinkReplace: /\\([\[\]])/g, indentCodeCompensation: /^(\s+)(?:```)/, beginningSpace: /^\s+/, endingHash: /#$/, startingSpaceChar: /^ /, endingSpaceChar: / $/, nonSpaceChar: /[^ ]/, newLineCharGlobal: /\n/g, tabCharGlobal: /\t/g, multipleSpaceGlobal: /\s+/g, blankLine: /^[ \t]*$/, doubleBlankLine: /\n[ \t]*\n[ \t]*$/, blockquoteStart: /^ {0,3}>/, blockquoteSetextReplace: /\n {0,3}((?:=+|-+) *)(?=\n|$)/g, blockquoteSetextReplace2: /^ {0,3}>[ \t]?/gm, listReplaceTabs: /^\t+/, listReplaceNesting: /^ {1,4}(?=( {4})*[^ ])/g, listIsTask: /^\[[ xX]\] /, listReplaceTask: /^\[[ xX]\] +/, anyLine: /\n.*\n/, hrefBrackets: /^<(.*)>$/, tableDelimiter: /[:|]/, tableAlignChars: /^\||\| *$/g, tableRowBlankLine: /\n[ \t]*$/, tableAlignRight: /^ *-+: *$/, tableAlignCenter: /^ *:-+: *$/, tableAlignLeft: /^ *:-+ *$/, startATag: /^<a /i, endATag: /^<\/a>/i, startPreScriptTag: /^<(pre|code|kbd|script)(\s|>)/i, endPreScriptTag: /^<\/(pre|code|kbd|script)(\s|>)/i, startAngleBracket: /^</, endAngleBracket: />$/, pedanticHrefTitle: /^([^'"]*[^\s])\s+(['"])(.*)\2/, unicodeAlphaNumeric: /[\p{L}\p{N}]/u, escapeTest: /[&<>"']/, escapeReplace: /[&<>"']/g, escapeTestNoEncode: /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/, escapeReplaceNoEncode: /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g, unescapeTest: /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig, caret: /(^|[^\[])\^/g, percentDecode: /%25/g, findPipe: /\|/g, splitPipe: / \|/, slashPipe: /\\\|/g, carriageReturn: /\r\n|\r/g, spaceLine: /^ +$/gm, notSpaceStart: /^\S*/, endingNewline: /\n$/, listItemRegex: (e) => new RegExp(`^( {0,3}${e})((?:[	 ][^\\n]*)?(?:\\n|$))`), nextBulletRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`), hrRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`), fencesBeginRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}(?:\`\`\`|~~~)`), headingBeginRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}#`), htmlBeginRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}<(?:[a-z].*>|!--)`, "i") }, e7 = /^(?:[ \t]*(?:\n|$))+/, t7 = /^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/, r7 = /^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/, Vf = /^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/, n7 = /^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/, dA = /(?:[*+-]|\d{1,9}[.)])/, _L = /^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html|table))+?)\n {0,3}(=+|-+) *(?:\n+|$)/, EL = Fr(_L).replace(/bull/g, dA).replace(/blockCode/g, /(?: {4}| {0,3}\t)/).replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g, / {0,3}>/).replace(/heading/g, / {0,3}#{1,6}/).replace(/html/g, / {0,3}<[^\n>]+>\n/).replace(/\|table/g, "").getRegex(), a7 = Fr(_L).replace(/bull/g, dA).replace(/blockCode/g, /(?: {4}| {0,3}\t)/).replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g, / {0,3}>/).replace(/heading/g, / {0,3}#{1,6}/).replace(/html/g, / {0,3}<[^\n>]+>\n/).replace(/table/g, / {0,3}\|?(?:[:\- ]*\|)+[\:\- ]*\n/).getRegex(), pA = /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/, i7 = /^[^\n]+/, mA = /(?!\s*\])(?:\\[\s\S]|[^\[\]\\])+/, o7 = Fr(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label", mA).replace("title", /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/).getRegex(), s7 = Fr(/^( {0,3}bull)([ \t][^\n]+?)?(?:\n|$)/).replace(/bull/g, dA).getRegex(), xE = "address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul", fA = /<!--(?:-?>|[\s\S]*?(?:-->|$))/, l7 = Fr("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))", "i").replace("comment", fA).replace("tag", xE).replace("attribute", / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(), SL = Fr(pA).replace("hr", Vf).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("|table", "").replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", xE).getRegex(), c7 = Fr(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/).replace("paragraph", SL).getRegex(), hA = { blockquote: c7, code: t7, def: o7, fences: r7, heading: n7, hr: Vf, html: l7, lheading: EL, list: s7, newline: e7, paragraph: SL, table: Gm, text: i7 }, YO = Fr("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr", Vf).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("blockquote", " {0,3}>").replace("code", "(?: {4}| {0,3}	)[^\\n]").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", xE).getRegex(), u7 = { ...hA, lheading: a7, table: YO, paragraph: Fr(pA).replace("hr", Vf).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("table", YO).replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", xE).getRegex() }, d7 = { ...hA, html: Fr(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace("comment", fA).replace(/tag/g, "(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(), def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/, heading: /^(#{1,6})(.*)(?:\n+|$)/, fences: Gm, lheading: /^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/, paragraph: Fr(pA).replace("hr", Vf).replace("heading", ` *#{1,6} *[^
-]`).replace("lheading", EL).replace("|table", "").replace("blockquote", " {0,3}>").replace("|fences", "").replace("|list", "").replace("|html", "").replace("|tag", "").getRegex() }, p7 = /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/, m7 = /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/, yL = /^( {2,}|\\)\n(?!\s*$)/, f7 = /^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/, DE = /[\p{P}\p{S}]/u, gA = /[\s\p{P}\p{S}]/u, bL = /[^\s\p{P}\p{S}]/u, h7 = Fr(/^((?![*_])punctSpace)/, "u").replace(/punctSpace/g, gA).getRegex(), vL = /(?!~)[\p{P}\p{S}]/u, g7 = /(?!~)[\s\p{P}\p{S}]/u, _7 = /(?:[^\s\p{P}\p{S}]|~)/u, E7 = Fr(/link|code|html/, "g").replace("link", new RegExp("\\[(?:[^\\[\\]`]|(?<!`)(?<a>`+)[^`]+\\k<a>(?!`))*?\\]\\((?:\\\\[\\s\\S]|[^\\\\\\(\\)]|\\((?:\\\\[\\s\\S]|[^\\\\\\(\\)])*\\))*\\)")).replace("code", new RegExp("(?<!`)(?<b>`+)[^`]+\\k<b>(?!`)")).replace("html", /<(?! )[^<>]*?>/).getRegex(), TL = /^(?:\*+(?:((?!\*)punct)|[^\s*]))|^_+(?:((?!_)punct)|([^\s_]))/, S7 = Fr(TL, "u").replace(/punct/g, DE).getRegex(), y7 = Fr(TL, "u").replace(/punct/g, vL).getRegex(), CL = "^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)", b7 = Fr(CL, "gu").replace(/notPunctSpace/g, bL).replace(/punctSpace/g, gA).replace(/punct/g, DE).getRegex(), v7 = Fr(CL, "gu").replace(/notPunctSpace/g, _7).replace(/punctSpace/g, g7).replace(/punct/g, vL).getRegex(), T7 = Fr("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)", "gu").replace(/notPunctSpace/g, bL).replace(/punctSpace/g, gA).replace(/punct/g, DE).getRegex(), C7 = Fr(/\\(punct)/, "gu").replace(/punct/g, DE).getRegex(), x7 = Fr(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme", /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email", /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(), D7 = Fr(fA).replace("(?:-->|$)", "-->").getRegex(), A7 = Fr("^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment", D7).replace("attribute", /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(), b_ = /(?:\[(?:\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+[^`]*?`+(?!`)|[^\[\]\\`])*?/, R7 = Fr(/^!?\[(label)\]\(\s*(href)(?:(?:[ \t]*(?:\n[ \t]*)?)(title))?\s*\)/).replace("label", b_).replace("href", /<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]*/).replace("title", /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/).getRegex(), xL = Fr(/^!?\[(label)\]\[(ref)\]/).replace("label", b_).replace("ref", mA).getRegex(), DL = Fr(/^!?\[(ref)\](?:\[\])?/).replace("ref", mA).getRegex(), N7 = Fr("reflink|nolink(?!\\()", "g").replace("reflink", xL).replace("nolink", DL).getRegex(), qO = /[hH][tT][tT][pP][sS]?|[fF][tT][pP]/, _A = { _backpedal: Gm, anyPunctuation: C7, autolink: x7, blockSkip: E7, br: yL, code: m7, del: Gm, emStrongLDelim: S7, emStrongRDelimAst: b7, emStrongRDelimUnd: T7, escape: p7, link: R7, nolink: DL, punctuation: h7, reflink: xL, reflinkSearch: N7, tag: A7, text: f7, url: Gm }, O7 = { ..._A, link: Fr(/^!?\[(label)\]\((.*?)\)/).replace("label", b_).getRegex(), reflink: Fr(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label", b_).getRegex() }, hx = { ..._A, emStrongRDelimAst: v7, emStrongLDelim: y7, url: Fr(/^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace("protocol", qO).replace("email", /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/).getRegex(), _backpedal: /(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/, del: /^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/, text: Fr(/^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|protocol:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)))/).replace("protocol", qO).getRegex() }, I7 = { ...hx, br: Fr(yL).replace("{2,}", "*").getRegex(), text: Fr(hx.text).replace("\\b_", "\\b_| {2,}\\n").replace(/\{2,\}/g, "*").getRegex() }, lg = { normal: hA, gfm: u7, pedantic: d7 }, fm = { normal: _A, gfm: hx, breaks: I7, pedantic: O7 }, w7 = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }, WO = (e) => w7[e];
+var Ba = { codeRemoveIndent: /^(?: {1,4}| {0,3}\t)/gm, outputLinkReplace: /\\([\[\]])/g, indentCodeCompensation: /^(\s+)(?:```)/, beginningSpace: /^\s+/, endingHash: /#$/, startingSpaceChar: /^ /, endingSpaceChar: / $/, nonSpaceChar: /[^ ]/, newLineCharGlobal: /\n/g, tabCharGlobal: /\t/g, multipleSpaceGlobal: /\s+/g, blankLine: /^[ \t]*$/, doubleBlankLine: /\n[ \t]*\n[ \t]*$/, blockquoteStart: /^ {0,3}>/, blockquoteSetextReplace: /\n {0,3}((?:=+|-+) *)(?=\n|$)/g, blockquoteSetextReplace2: /^ {0,3}>[ \t]?/gm, listReplaceTabs: /^\t+/, listReplaceNesting: /^ {1,4}(?=( {4})*[^ ])/g, listIsTask: /^\[[ xX]\] /, listReplaceTask: /^\[[ xX]\] +/, anyLine: /\n.*\n/, hrefBrackets: /^<(.*)>$/, tableDelimiter: /[:|]/, tableAlignChars: /^\||\| *$/g, tableRowBlankLine: /\n[ \t]*$/, tableAlignRight: /^ *-+: *$/, tableAlignCenter: /^ *:-+: *$/, tableAlignLeft: /^ *:-+ *$/, startATag: /^<a /i, endATag: /^<\/a>/i, startPreScriptTag: /^<(pre|code|kbd|script)(\s|>)/i, endPreScriptTag: /^<\/(pre|code|kbd|script)(\s|>)/i, startAngleBracket: /^</, endAngleBracket: />$/, pedanticHrefTitle: /^([^'"]*[^\s])\s+(['"])(.*)\2/, unicodeAlphaNumeric: /[\p{L}\p{N}]/u, escapeTest: /[&<>"']/, escapeReplace: /[&<>"']/g, escapeTestNoEncode: /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/, escapeReplaceNoEncode: /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g, unescapeTest: /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig, caret: /(^|[^\[])\^/g, percentDecode: /%25/g, findPipe: /\|/g, splitPipe: / \|/, slashPipe: /\\\|/g, carriageReturn: /\r\n|\r/g, spaceLine: /^ +$/gm, notSpaceStart: /^\S*/, endingNewline: /\n$/, listItemRegex: (e) => new RegExp(`^( {0,3}${e})((?:[	 ][^\\n]*)?(?:\\n|$))`), nextBulletRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`), hrRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`), fencesBeginRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}(?:\`\`\`|~~~)`), headingBeginRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}#`), htmlBeginRegex: (e) => new RegExp(`^ {0,${Math.min(3, e - 1)}}<(?:[a-z].*>|!--)`, "i") }, e7 = /^(?:[ \t]*(?:\n|$))+/, t7 = /^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/, r7 = /^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/, Vf = /^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/, n7 = /^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/, dA = /(?:[*+-]|\d{1,9}[.)])/, _L = /^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html|table))+?)\n {0,3}(=+|-+) *(?:\n+|$)/, EL = Br(_L).replace(/bull/g, dA).replace(/blockCode/g, /(?: {4}| {0,3}\t)/).replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g, / {0,3}>/).replace(/heading/g, / {0,3}#{1,6}/).replace(/html/g, / {0,3}<[^\n>]+>\n/).replace(/\|table/g, "").getRegex(), a7 = Br(_L).replace(/bull/g, dA).replace(/blockCode/g, /(?: {4}| {0,3}\t)/).replace(/fences/g, / {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g, / {0,3}>/).replace(/heading/g, / {0,3}#{1,6}/).replace(/html/g, / {0,3}<[^\n>]+>\n/).replace(/table/g, / {0,3}\|?(?:[:\- ]*\|)+[\:\- ]*\n/).getRegex(), pA = /^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/, i7 = /^[^\n]+/, mA = /(?!\s*\])(?:\\[\s\S]|[^\[\]\\])+/, o7 = Br(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label", mA).replace("title", /(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/).getRegex(), s7 = Br(/^( {0,3}bull)([ \t][^\n]+?)?(?:\n|$)/).replace(/bull/g, dA).getRegex(), xE = "address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul", fA = /<!--(?:-?>|[\s\S]*?(?:-->|$))/, l7 = Br("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))", "i").replace("comment", fA).replace("tag", xE).replace("attribute", / +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(), SL = Br(pA).replace("hr", Vf).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("|table", "").replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", xE).getRegex(), c7 = Br(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/).replace("paragraph", SL).getRegex(), hA = { blockquote: c7, code: t7, def: o7, fences: r7, heading: n7, hr: Vf, html: l7, lheading: EL, list: s7, newline: e7, paragraph: SL, table: Gm, text: i7 }, YO = Br("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr", Vf).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("blockquote", " {0,3}>").replace("code", "(?: {4}| {0,3}	)[^\\n]").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", xE).getRegex(), u7 = { ...hA, lheading: a7, table: YO, paragraph: Br(pA).replace("hr", Vf).replace("heading", " {0,3}#{1,6}(?:\\s|$)").replace("|lheading", "").replace("table", YO).replace("blockquote", " {0,3}>").replace("fences", " {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list", " {0,3}(?:[*+-]|1[.)]) ").replace("html", "</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag", xE).getRegex() }, d7 = { ...hA, html: Br(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace("comment", fA).replace(/tag/g, "(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(), def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/, heading: /^(#{1,6})(.*)(?:\n+|$)/, fences: Gm, lheading: /^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/, paragraph: Br(pA).replace("hr", Vf).replace("heading", ` *#{1,6} *[^
+]`).replace("lheading", EL).replace("|table", "").replace("blockquote", " {0,3}>").replace("|fences", "").replace("|list", "").replace("|html", "").replace("|tag", "").getRegex() }, p7 = /^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/, m7 = /^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/, yL = /^( {2,}|\\)\n(?!\s*$)/, f7 = /^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/, DE = /[\p{P}\p{S}]/u, gA = /[\s\p{P}\p{S}]/u, bL = /[^\s\p{P}\p{S}]/u, h7 = Br(/^((?![*_])punctSpace)/, "u").replace(/punctSpace/g, gA).getRegex(), vL = /(?!~)[\p{P}\p{S}]/u, g7 = /(?!~)[\s\p{P}\p{S}]/u, _7 = /(?:[^\s\p{P}\p{S}]|~)/u, E7 = Br(/link|code|html/, "g").replace("link", new RegExp("\\[(?:[^\\[\\]`]|(?<!`)(?<a>`+)[^`]+\\k<a>(?!`))*?\\]\\((?:\\\\[\\s\\S]|[^\\\\\\(\\)]|\\((?:\\\\[\\s\\S]|[^\\\\\\(\\)])*\\))*\\)")).replace("code", new RegExp("(?<!`)(?<b>`+)[^`]+\\k<b>(?!`)")).replace("html", /<(?! )[^<>]*?>/).getRegex(), TL = /^(?:\*+(?:((?!\*)punct)|[^\s*]))|^_+(?:((?!_)punct)|([^\s_]))/, S7 = Br(TL, "u").replace(/punct/g, DE).getRegex(), y7 = Br(TL, "u").replace(/punct/g, vL).getRegex(), CL = "^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)", b7 = Br(CL, "gu").replace(/notPunctSpace/g, bL).replace(/punctSpace/g, gA).replace(/punct/g, DE).getRegex(), v7 = Br(CL, "gu").replace(/notPunctSpace/g, _7).replace(/punctSpace/g, g7).replace(/punct/g, vL).getRegex(), T7 = Br("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)", "gu").replace(/notPunctSpace/g, bL).replace(/punctSpace/g, gA).replace(/punct/g, DE).getRegex(), C7 = Br(/\\(punct)/, "gu").replace(/punct/g, DE).getRegex(), x7 = Br(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme", /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email", /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(), D7 = Br(fA).replace("(?:-->|$)", "-->").getRegex(), A7 = Br("^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment", D7).replace("attribute", /\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(), b_ = /(?:\[(?:\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+[^`]*?`+(?!`)|[^\[\]\\`])*?/, R7 = Br(/^!?\[(label)\]\(\s*(href)(?:(?:[ \t]*(?:\n[ \t]*)?)(title))?\s*\)/).replace("label", b_).replace("href", /<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]*/).replace("title", /"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/).getRegex(), xL = Br(/^!?\[(label)\]\[(ref)\]/).replace("label", b_).replace("ref", mA).getRegex(), DL = Br(/^!?\[(ref)\](?:\[\])?/).replace("ref", mA).getRegex(), N7 = Br("reflink|nolink(?!\\()", "g").replace("reflink", xL).replace("nolink", DL).getRegex(), qO = /[hH][tT][tT][pP][sS]?|[fF][tT][pP]/, _A = { _backpedal: Gm, anyPunctuation: C7, autolink: x7, blockSkip: E7, br: yL, code: m7, del: Gm, emStrongLDelim: S7, emStrongRDelimAst: b7, emStrongRDelimUnd: T7, escape: p7, link: R7, nolink: DL, punctuation: h7, reflink: xL, reflinkSearch: N7, tag: A7, text: f7, url: Gm }, O7 = { ..._A, link: Br(/^!?\[(label)\]\((.*?)\)/).replace("label", b_).getRegex(), reflink: Br(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label", b_).getRegex() }, hx = { ..._A, emStrongRDelimAst: v7, emStrongLDelim: y7, url: Br(/^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace("protocol", qO).replace("email", /[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/).getRegex(), _backpedal: /(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/, del: /^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/, text: Br(/^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|protocol:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)))/).replace("protocol", qO).getRegex() }, I7 = { ...hx, br: Br(yL).replace("{2,}", "*").getRegex(), text: Br(hx.text).replace("\\b_", "\\b_| {2,}\\n").replace(/\{2,\}/g, "*").getRegex() }, lg = { normal: hA, gfm: u7, pedantic: d7 }, fm = { normal: _A, gfm: hx, breaks: I7, pedantic: O7 }, w7 = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }, WO = (e) => w7[e];
 function Io(e, t) {
   if (t) {
     if (Ba.escapeTest.test(e)) return e.replace(Ba.escapeReplace, WO);
@@ -36961,7 +36961,7 @@ function CQ({ anchorEl: e, setAnchorEl: t, onSelect: r }) {
           minWidth: 240
         }
       },
-      children: /* @__PURE__ */ A.jsx($r, { spacing: 0, children: TQ.map((i, s) => /* @__PURE__ */ A.jsx(vQ, { label: i.label, icon: i.icon, onClick: () => a(i.genBlock()) }, s)) })
+      children: /* @__PURE__ */ A.jsx(Lr, { spacing: 0, children: TQ.map((i, s) => /* @__PURE__ */ A.jsx(vQ, { label: i.label, icon: i.icon, onClick: () => a(i.genBlock()) }, s)) })
     }
   );
 }
@@ -37435,7 +37435,7 @@ function FQ({ blockId: e }) {
           boxShadow: "0 4px 16px rgba(0, 0, 0, 0.15)"
         },
         onClick: (f) => f.stopPropagation(),
-        children: /* @__PURE__ */ A.jsxs($r, { direction: "column", spacing: 0, children: [
+        children: /* @__PURE__ */ A.jsxs(Lr, { direction: "column", spacing: 0, children: [
           /* @__PURE__ */ A.jsx(va, { title: "Move up", placement: "right", children: /* @__PURE__ */ A.jsx(Ui, { onClick: () => u("up"), size: "small", sx: { color: "text.primary", borderRadius: 0 }, children: /* @__PURE__ */ A.jsx(UK, { fontSize: "small" }) }) }),
           /* @__PURE__ */ A.jsx(va, { title: "Move down", placement: "right", children: /* @__PURE__ */ A.jsx(Ui, { onClick: () => u("down"), size: "small", sx: { color: "text.primary", borderRadius: 0 }, children: /* @__PURE__ */ A.jsx(BK, { fontSize: "small" }) }) }),
           /* @__PURE__ */ A.jsx(va, { title: "Delete", placement: "right", children: /* @__PURE__ */ A.jsx(Ui, { onClick: i, size: "small", sx: { color: "error.main", borderRadius: 0 }, children: /* @__PURE__ */ A.jsx(YK, { fontSize: "small" }) }) })
@@ -37653,12 +37653,12 @@ const VQ = Wt({
 function yo({ title: e, children: t }) {
   return /* @__PURE__ */ A.jsxs(Rr, { p: 2, children: [
     /* @__PURE__ */ A.jsx(Un, { variant: "overline", color: "text.secondary", sx: { display: "block", mb: 2 }, children: e }),
-    /* @__PURE__ */ A.jsx($r, { spacing: 5, mb: 3, children: t })
+    /* @__PURE__ */ A.jsx(Lr, { spacing: 5, mb: 3, children: t })
   ] });
 }
 function jo({ label: e, children: t, defaultValue: r, onChange: n }) {
   const [a, i] = tr(r);
-  return /* @__PURE__ */ A.jsxs($r, { alignItems: "flex-start", children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { alignItems: "flex-start", children: [
     /* @__PURE__ */ A.jsx(Us, { shrink: !0, children: e }),
     /* @__PURE__ */ A.jsx(
       Hf,
@@ -37678,7 +37678,7 @@ function jo({ label: e, children: t, defaultValue: r, onChange: n }) {
   ] });
 }
 function Im({ iconLabel: e, value: t, setValue: r, units: n, ...a }) {
-  return /* @__PURE__ */ A.jsxs($r, { direction: "row", alignItems: "center", spacing: 2, justifyContent: "space-between", width: "100%", children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { direction: "row", alignItems: "center", spacing: 2, justifyContent: "space-between", width: "100%", children: [
     /* @__PURE__ */ A.jsx(Rr, { sx: { minWidth: 24, lineHeight: 1, flexShrink: 0 }, children: e }),
     /* @__PURE__ */ A.jsx(
       XD,
@@ -37700,7 +37700,7 @@ function Im({ iconLabel: e, value: t, setValue: r, units: n, ...a }) {
 }
 function ip({ label: e, defaultValue: t, onChange: r, ...n }) {
   const [a, i] = tr(t);
-  return /* @__PURE__ */ A.jsxs($r, { spacing: 1, alignItems: "flex-start", children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { spacing: 1, alignItems: "flex-start", children: [
     /* @__PURE__ */ A.jsx(Us, { shrink: !0, children: e }),
     /* @__PURE__ */ A.jsx(
       Im,
@@ -38009,7 +38009,7 @@ const pX = [
   }
 };
 function tF({ value: e, onChange: t }) {
-  return /* @__PURE__ */ A.jsxs($r, { spacing: 1, sx: mX, children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { spacing: 1, sx: mX, children: [
     /* @__PURE__ */ A.jsx(oX, { color: e, onChange: t }),
     /* @__PURE__ */ A.jsx(dX, { paletteColors: pX, value: e, onChange: t }),
     /* @__PURE__ */ A.jsx(Rr, { pt: 1, children: /* @__PURE__ */ A.jsx(cX, { prefixed: !0, color: e, onChange: t }) })
@@ -38035,9 +38035,9 @@ function rF({ label: e, defaultValue: t, onChange: r, nullable: n }) {
       children: /* @__PURE__ */ A.jsx(GL, { fontSize: "small", sx: { color: "grey.600" } })
     }
   ), h = () => s ? /* @__PURE__ */ A.jsx(ea, { onClick: u, sx: { ..._0, bgcolor: s } }) : /* @__PURE__ */ A.jsx(ea, { onClick: u, sx: { ..._0 }, children: /* @__PURE__ */ A.jsx(zL, { fontSize: "small" }) });
-  return /* @__PURE__ */ A.jsxs($r, { alignItems: "flex-start", sx: { width: "100%" }, children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { alignItems: "flex-start", sx: { width: "100%" }, children: [
     /* @__PURE__ */ A.jsx(Us, { sx: { mb: 0.5 }, children: e }),
-    /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 1, children: [
+    /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 1, children: [
       h(),
       f()
     ] }),
@@ -38207,7 +38207,7 @@ function SX({ label: e, defaultValue: t, onChange: r }) {
     };
     a(u), r(u);
   }
-  return /* @__PURE__ */ A.jsxs($r, { spacing: 2, alignItems: "flex-start", pb: 1, children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { spacing: 2, alignItems: "flex-start", pb: 1, children: [
     /* @__PURE__ */ A.jsx(Us, { shrink: !0, children: e }),
     /* @__PURE__ */ A.jsx(
       Im,
@@ -38294,7 +38294,7 @@ function bX({ label: e, defaultValue: t, onChange: r }) {
     const E = h.length > 0 ? h.join(" ") : null;
     r({ fontWeight: u, fontStyle: f, textDecoration: E });
   };
-  return /* @__PURE__ */ A.jsxs($r, { alignItems: "flex-start", children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { alignItems: "flex-start", children: [
     /* @__PURE__ */ A.jsx(Us, { shrink: !0, children: e }),
     /* @__PURE__ */ A.jsxs(
       Hf,
@@ -38364,13 +38364,13 @@ function vc({ name: e, value: t, onChange: r }) {
 function Ko({ names: e, value: t, onChange: r }) {
   const n = e.includes("color") && e.includes("backgroundColor"), a = e.includes("fontFamily") && e.includes("fontSize"), i = e.includes("backgroundColor") && e.includes("borderColor");
   let s = e;
-  return n && (s = s.filter((l) => l !== "backgroundColor")), a && (s = s.filter((l) => l !== "fontSize")), i && (s = s.filter((l) => l !== "borderColor")), /* @__PURE__ */ A.jsx(A.Fragment, { children: s.map((l) => n && l === "color" ? /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 2, children: [
+  return n && (s = s.filter((l) => l !== "backgroundColor")), a && (s = s.filter((l) => l !== "fontSize")), i && (s = s.filter((l) => l !== "borderColor")), /* @__PURE__ */ A.jsx(A.Fragment, { children: s.map((l) => n && l === "color" ? /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 2, children: [
     /* @__PURE__ */ A.jsx(Rr, { sx: { flex: 1 }, children: /* @__PURE__ */ A.jsx(vc, { name: "color", value: t || {}, onChange: r }) }),
     /* @__PURE__ */ A.jsx(Rr, { sx: { flex: 1 }, children: /* @__PURE__ */ A.jsx(vc, { name: "backgroundColor", value: t || {}, onChange: r }) })
-  ] }, "color-pair") : a && l === "fontFamily" ? /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 2, children: [
+  ] }, "color-pair") : a && l === "fontFamily" ? /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 2, children: [
     /* @__PURE__ */ A.jsx(Rr, { sx: { flex: 1 }, children: /* @__PURE__ */ A.jsx(vc, { name: "fontFamily", value: t || {}, onChange: r }) }),
     /* @__PURE__ */ A.jsx(Rr, { sx: { flex: 1 }, children: /* @__PURE__ */ A.jsx(vc, { name: "fontSize", value: t || {}, onChange: r }) })
-  ] }, "font-pair") : i && l === "backgroundColor" ? /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 2, children: [
+  ] }, "font-pair") : i && l === "backgroundColor" ? /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 2, children: [
     /* @__PURE__ */ A.jsx(Rr, { sx: { flex: 1 }, children: /* @__PURE__ */ A.jsx(vc, { name: "backgroundColor", value: t || {}, onChange: r }) }),
     /* @__PURE__ */ A.jsx(Rr, { sx: { flex: 1 }, children: /* @__PURE__ */ A.jsx(vc, { name: "borderColor", value: t || {}, onChange: r }) })
   ] }, "background-border-color-pair") : /* @__PURE__ */ A.jsx(vc, { name: l, value: t || {}, onChange: r }, l)) });
@@ -38577,7 +38577,7 @@ function CX({ defaultValue: e, onChange: t }) {
         a(2, s);
       }
     }
-  ), /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 1, children: [
+  ), /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 1, children: [
     /* @__PURE__ */ A.jsx(
       Ym,
       {
@@ -38758,9 +38758,9 @@ function Em({ label: e, defaultValue: t, onChange: r, onStartEditing: n, onFinis
       children: /* @__PURE__ */ A.jsx(GL, { fontSize: "small", sx: { color: "grey.600" } })
     }
   ), y = () => u ? /* @__PURE__ */ A.jsx(ea, { onClick: h, sx: { ...E0, bgcolor: u } }) : /* @__PURE__ */ A.jsx(ea, { onClick: h, sx: { ...E0 }, children: /* @__PURE__ */ A.jsx(zL, { fontSize: "small" }) });
-  return /* @__PURE__ */ A.jsxs($r, { alignItems: "flex-start", sx: { width: "100%" }, children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { alignItems: "flex-start", sx: { width: "100%" }, children: [
     /* @__PURE__ */ A.jsx(Us, { sx: { mb: 0.5 }, children: e }),
-    /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 1, children: [
+    /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 1, children: [
       y(),
       S()
     ] }),
@@ -38804,9 +38804,9 @@ function Iy({
   const [u, f] = tr(t);
   return vi(() => {
     f(t);
-  }, [t]), /* @__PURE__ */ A.jsxs($r, { spacing: 1, alignItems: "flex-start", children: [
+  }, [t]), /* @__PURE__ */ A.jsxs(Lr, { spacing: 1, alignItems: "flex-start", children: [
     /* @__PURE__ */ A.jsx(Us, { shrink: !0, children: e }),
-    /* @__PURE__ */ A.jsxs($r, { direction: "row", alignItems: "center", spacing: 2, justifyContent: "space-between", width: "100%", children: [
+    /* @__PURE__ */ A.jsxs(Lr, { direction: "row", alignItems: "center", spacing: 2, justifyContent: "space-between", width: "100%", children: [
       /* @__PURE__ */ A.jsx(Rr, { sx: { minWidth: 24, lineHeight: 1, flexShrink: 0 }, children: i }),
       /* @__PURE__ */ A.jsx(
         XD,
@@ -38852,53 +38852,55 @@ function OX({ data: e, setData: t }) {
     a(!1), s(null);
   };
   return /* @__PURE__ */ A.jsxs(yo, { title: "Global", children: [
-    /* @__PURE__ */ A.jsxs(Xa, { container: !0, spacing: 2, children: [
-      /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%" }, children: /* @__PURE__ */ A.jsx(
-        Em,
-        {
-          nullable: !1,
-          label: "Backdrop color",
-          defaultValue: e.backdropColor ?? "#F5F5F5",
-          onChange: (C) => u({ ...e, backdropColor: C }),
-          onStartEditing: h,
-          onFinishEditing: E
-        }
-      ) }),
-      /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%" }, children: /* @__PURE__ */ A.jsx(
-        Em,
-        {
-          nullable: !1,
-          label: "Text color",
-          defaultValue: e.textColor ?? "#262626",
-          onChange: (C) => u({ ...e, textColor: C }),
-          onStartEditing: h,
-          onFinishEditing: E
-        }
-      ) })
-    ] }),
-    /* @__PURE__ */ A.jsxs(Xa, { container: !0, spacing: 2, children: [
-      /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%" }, children: /* @__PURE__ */ A.jsx(
-        Em,
-        {
-          nullable: !1,
-          label: "Canvas color",
-          defaultValue: e.canvasColor ?? "#FFFFFF",
-          onChange: (C) => u({ ...e, canvasColor: C }),
-          onStartEditing: h,
-          onFinishEditing: E
-        }
-      ) }),
-      /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%" }, children: /* @__PURE__ */ A.jsx(
-        Em,
-        {
-          nullable: !0,
-          label: "Canvas border color",
-          defaultValue: e.borderColor ?? null,
-          onChange: (C) => u({ ...e, borderColor: C }),
-          onStartEditing: h,
-          onFinishEditing: E
-        }
-      ) })
+    /* @__PURE__ */ A.jsxs(Lr, { spacing: 2, children: [
+      /* @__PURE__ */ A.jsxs(Xa, { container: !0, spacing: 2, sx: { ml: 0 }, children: [
+        /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%", pl: "0 !important" }, children: /* @__PURE__ */ A.jsx(
+          Em,
+          {
+            nullable: !1,
+            label: "Backdrop color",
+            defaultValue: e.backdropColor ?? "#F5F5F5",
+            onChange: (C) => u({ ...e, backdropColor: C }),
+            onStartEditing: h,
+            onFinishEditing: E
+          }
+        ) }),
+        /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%" }, children: /* @__PURE__ */ A.jsx(
+          Em,
+          {
+            nullable: !1,
+            label: "Text color",
+            defaultValue: e.textColor ?? "#262626",
+            onChange: (C) => u({ ...e, textColor: C }),
+            onStartEditing: h,
+            onFinishEditing: E
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ A.jsxs(Xa, { container: !0, spacing: 2, sx: { ml: 0 }, children: [
+        /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%", pl: "0 !important" }, children: /* @__PURE__ */ A.jsx(
+          Em,
+          {
+            nullable: !1,
+            label: "Canvas color",
+            defaultValue: e.canvasColor ?? "#FFFFFF",
+            onChange: (C) => u({ ...e, canvasColor: C }),
+            onStartEditing: h,
+            onFinishEditing: E
+          }
+        ) }),
+        /* @__PURE__ */ A.jsx(Xa, { item: !0, xs: 6, sx: { width: "100%" }, children: /* @__PURE__ */ A.jsx(
+          Em,
+          {
+            nullable: !0,
+            label: "Canvas border color",
+            defaultValue: e.borderColor ?? null,
+            onChange: (C) => u({ ...e, borderColor: C }),
+            onStartEditing: h,
+            onFinishEditing: E
+          }
+        ) })
+      ] })
     ] }),
     /* @__PURE__ */ A.jsx(
       Iy,
@@ -39121,7 +39123,7 @@ function MX({ data: e, setData: t }) {
           h({ ...e, props: { ...e.props, url: P } });
         }
       }
-    ) : /* @__PURE__ */ A.jsxs($r, { spacing: 1, children: [
+    ) : /* @__PURE__ */ A.jsxs(Lr, { spacing: 1, children: [
       /* @__PURE__ */ A.jsx(
         "input",
         {
@@ -39194,7 +39196,7 @@ function MX({ data: e, setData: t }) {
         }
       }
     ),
-    /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 2, children: [
+    /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 2, children: [
       /* @__PURE__ */ A.jsx(
         Ym,
         {
@@ -39403,7 +39405,7 @@ function HX({ fields: e }) {
         children: /* @__PURE__ */ A.jsx(
           WD,
           {
-            primary: /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 0.5, alignItems: "center", sx: { flexWrap: "wrap" }, children: [
+            primary: /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 0.5, alignItems: "center", sx: { flexWrap: "wrap" }, children: [
               /* @__PURE__ */ A.jsx(
                 Un,
                 {
@@ -39501,12 +39503,12 @@ function VX({ templateFields: e = [] }) {
         boxShadow: r ? "-2px 0 8px rgba(0, 0, 0, 0.1)" : "none"
       },
       children: [
-        /* @__PURE__ */ A.jsx(Rr, { sx: { height: 49, borderBottom: 1, borderColor: "divider" }, children: /* @__PURE__ */ A.jsxs($r, { direction: "row", alignItems: "center", justifyContent: "space-between", px: 2, height: "100%", children: [
+        /* @__PURE__ */ A.jsx(Rr, { sx: { height: 49, borderBottom: 1, borderColor: "divider" }, children: /* @__PURE__ */ A.jsxs(Lr, { direction: "row", alignItems: "center", justifyContent: "space-between", px: 2, height: "100%", children: [
           /* @__PURE__ */ A.jsxs(ZD, { value: t, onChange: (H, Q) => PK(Q), children: [
             n && /* @__PURE__ */ A.jsx(Oc, { value: "block-configuration", label: "Configuration" }),
             l && /* @__PURE__ */ A.jsx(Oc, { value: "template-fields", label: "Template Fields" })
           ] }),
-          P && /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 0.5, children: [
+          P && /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 0.5, children: [
             /* @__PURE__ */ A.jsx(va, { title: "Undo", children: /* @__PURE__ */ A.jsx("span", { children: /* @__PURE__ */ A.jsx(Ui, { size: "small", disabled: !P.canUndo, onClick: P.undo, children: /* @__PURE__ */ A.jsx(yQ, { fontSize: "small" }) }) }) }),
             /* @__PURE__ */ A.jsx(va, { title: "Redo", children: /* @__PURE__ */ A.jsx("span", { children: /* @__PURE__ */ A.jsx(Ui, { size: "small", disabled: !P.canRedo, onClick: P.redo, children: /* @__PURE__ */ A.jsx(fQ, { fontSize: "small" }) }) }) })
           ] })
@@ -96438,7 +96440,7 @@ var kA = mae;
 function fae(e) {
   return Array.isArray(e) && e.length > 0;
 }
-var Lr = fae, GF = new Proxy(() => {
+var Fr = fae, GF = new Proxy(() => {
 }, { get: () => GF }), MA = GF, fg = "'", gP = '"';
 function hae(e, t) {
   let r = t === !0 || t === fg ? fg : gP, n = r === fg ? gP : fg, a = 0, i = 0;
@@ -96778,7 +96780,7 @@ var Rt = { Leading: 2, Trailing: 4, Dangling: 8, Block: 16, Line: 32, PrettierIg
   if (typeof e == "function" && (t = e, e = 0), e || t) return (r, n, a) => !(e & Rt.Leading && !r.leading || e & Rt.Trailing && !r.trailing || e & Rt.Dangling && (r.leading || r.trailing) || e & Rt.Block && !Qi(r) || e & Rt.Line && !qf(r) || e & Rt.First && n !== 0 || e & Rt.Last && n !== a.length - 1 || e & Rt.PrettierIgnore && !D_(r) || t && !t(r));
 };
 function ft(e, t, r) {
-  if (!Lr(e == null ? void 0 : e.comments)) return !1;
+  if (!Fr(e == null ? void 0 : e.comments)) return !1;
   let n = nB(t, r);
   return n ? e.comments.some(n) : !0;
 }
@@ -97204,7 +97206,7 @@ function Mie({ comment: e, precedingNode: t, enclosingNode: r }) {
 var Lie = /* @__PURE__ */ new Set(["ClassDeclaration", "ClassExpression", "DeclareClass", "DeclareInterface", "InterfaceDeclaration", "TSInterfaceDeclaration"]);
 function gB({ comment: e, precedingNode: t, enclosingNode: r, followingNode: n }) {
   if (Lie.has(r == null ? void 0 : r.type)) {
-    if (Lr(r.decorators) && (n == null ? void 0 : n.type) !== "Decorator") return vn(Wr(!1, r.decorators, -1), e), !0;
+    if (Fr(r.decorators) && (n == null ? void 0 : n.type) !== "Decorator") return vn(Wr(!1, r.decorators, -1), e), !0;
     if (r.body && n === r.body) return uu(r.body, e), !0;
     if (n) {
       if (r.superClass && n === r.superClass && t && (t === r.id || t === r.typeParameters)) return vn(t, e), !0;
@@ -97252,7 +97254,7 @@ function Yie({ comment: e, enclosingNode: t }) {
 }
 function jA({ comment: e, enclosingNode: t, ast: r, isLastComment: n }) {
   var a;
-  return ((a = r == null ? void 0 : r.body) == null ? void 0 : a.length) === 0 ? (n ? xi(r, e) : Ca(r, e), !0) : (t == null ? void 0 : t.type) === "Program" && t.body.length === 0 && !Lr(t.directives) ? (n ? xi(t, e) : Ca(t, e), !0) : !1;
+  return ((a = r == null ? void 0 : r.body) == null ? void 0 : a.length) === 0 ? (n ? xi(r, e) : Ca(r, e), !0) : (t == null ? void 0 : t.type) === "Program" && t.body.length === 0 && !Fr(t.directives) ? (n ? xi(t, e) : Ca(t, e), !0) : !1;
 }
 function qie({ comment: e, enclosingNode: t }) {
   return (t == null ? void 0 : t.type) === "ForInStatement" || (t == null ? void 0 : t.type) === "ForOfStatement" ? (Ca(t, e), !0) : !1;
@@ -97296,7 +97298,7 @@ function noe(e) {
 }
 function aoe(e, t) {
   var r;
-  if ((t.parser === "typescript" || t.parser === "flow" || t.parser === "hermes" || t.parser === "acorn" || t.parser === "oxc" || t.parser === "oxc-ts" || t.parser === "espree" || t.parser === "meriyah" || t.parser === "__babel_estree") && e.type === "MethodDefinition" && ((r = e.value) == null ? void 0 : r.type) === "FunctionExpression" && Ta(e.value).length === 0 && !e.value.returnType && !Lr(e.value.typeParameters) && e.value.body) return [...e.decorators || [], e.key, e.value.body];
+  if ((t.parser === "typescript" || t.parser === "flow" || t.parser === "hermes" || t.parser === "acorn" || t.parser === "oxc" || t.parser === "oxc-ts" || t.parser === "espree" || t.parser === "meriyah" || t.parser === "__babel_estree") && e.type === "MethodDefinition" && ((r = e.value) == null ? void 0 : r.type) === "FunctionExpression" && Ta(e.value).length === 0 && !e.value.returnType && !Fr(e.value.typeParameters) && e.value.body) return [...e.decorators || [], e.key, e.value.body];
 }
 function CB(e) {
   let { node: t, parent: r } = e;
@@ -97670,7 +97672,7 @@ async function yoe(e, t, r) {
   return ["`", Je([Xe, f]), je, "`"];
 }
 function boe(e, t) {
-  if (!Lr(t)) return e;
+  if (!Fr(t)) return e;
   let r = 0, n = cp(VA(e), (a) => typeof a != "string" || !a.includes("@prettier-placeholder") ? a : a.split(/@prettier-placeholder-(\d+)-id/u).map((i, s) => s % 2 === 0 ? Kc(i) : (r++, t[i])));
   return t.length === r ? n : null;
 }
@@ -97902,7 +97904,7 @@ function Lx(e, t) {
       return !1;
     case "ClassDeclaration":
     case "ClassExpression":
-      if (S === "superClass" && (E.type === "ArrowFunctionExpression" || E.type === "AssignmentExpression" || E.type === "AwaitExpression" || E.type === "BinaryExpression" || E.type === "ConditionalExpression" || E.type === "LogicalExpression" || E.type === "NewExpression" || E.type === "ObjectExpression" || E.type === "SequenceExpression" || E.type === "TaggedTemplateExpression" || E.type === "UnaryExpression" || E.type === "UpdateExpression" || E.type === "YieldExpression" || E.type === "TSNonNullExpression" || E.type === "ClassExpression" && Lr(E.decorators))) return !0;
+      if (S === "superClass" && (E.type === "ArrowFunctionExpression" || E.type === "AssignmentExpression" || E.type === "AwaitExpression" || E.type === "BinaryExpression" || E.type === "ConditionalExpression" || E.type === "LogicalExpression" || E.type === "NewExpression" || E.type === "ObjectExpression" || E.type === "SequenceExpression" || E.type === "TaggedTemplateExpression" || E.type === "UnaryExpression" || E.type === "UpdateExpression" || E.type === "YieldExpression" || E.type === "TSNonNullExpression" || E.type === "ClassExpression" && Fr(E.decorators))) return !0;
       break;
     case "ExportDefaultDeclaration":
       return kB(e, t) || E.type === "SequenceExpression";
@@ -98292,7 +98294,7 @@ function _se(e, t, r) {
 }
 function cn(e, t, r = {}) {
   let { node: n } = e;
-  if (!Lr(n == null ? void 0 : n.comments)) return "";
+  if (!Fr(n == null ? void 0 : n.comments)) return "";
   let { indent: a = !1, marker: i, filter: s = hse } = r, l = [];
   if (e.each(({ node: f }) => {
     f.leading || f.trailing || f.marker !== i || !s(f) || l.push(QA(e, t));
@@ -98691,7 +98693,7 @@ function jse(e, t, r) {
 }
 function Kse(e, t, r) {
   let { node: n, parent: a } = e, { decorators: i } = n;
-  if (!Lr(i) || $B(a) || LB(e)) return "";
+  if (!Fr(i) || $B(a) || LB(e)) return "";
   let s = n.type === "ClassExpression" || n.type === "ClassDeclaration" || UB(n, t);
   return [e.key === "declaration" && Lae(a) ? Xe : s ? Zo : "", Nr(Ct, e.map(r, "decorators")), Ct];
 }
@@ -98702,7 +98704,7 @@ function $B(e) {
   var t;
   if (e.type !== "ExportDefaultDeclaration" && e.type !== "ExportNamedDeclaration" && e.type !== "DeclareExportDeclaration") return !1;
   let r = (t = e.declaration) == null ? void 0 : t.decorators;
-  return Lr(r) && ME(e, r[0]);
+  return Fr(r) && ME(e, r[0]);
 }
 var A_ = class extends Error {
   constructor() {
@@ -98966,7 +98968,7 @@ function cle(e, t, r, n) {
       return l.type === "ConditionalExpression" || u.type === "ConditionalExpression";
     }
     case "ClassExpression":
-      return Lr(a.decorators);
+      return Fr(a.decorators);
   }
   if (n) return !1;
   let i = a, s = [];
@@ -98993,7 +98995,7 @@ function YB(e) {
 }
 function dle(e) {
   let t = mle(e);
-  if (Lr(t)) {
+  if (Fr(t)) {
     let r = e.type === "TSTypeAliasDeclaration" ? "constraint" : "bound";
     if (t.length > 1 && t.some((n) => n[r] || n.default)) return !0;
   }
@@ -99009,7 +99011,7 @@ function fle(e) {
   let { typeAnnotation: t } = e.id;
   if (!t || !t.typeAnnotation) return !1;
   let r = kP(t.typeAnnotation);
-  return Lr(r) && r.length > 1 && r.some((n) => Lr(kP(n)) || n.type === "TSConditionalType");
+  return Fr(r) && r.length > 1 && r.some((n) => Fr(kP(n)) || n.type === "TSConditionalType");
 }
 function qB(e) {
   var t;
@@ -99036,7 +99038,7 @@ function gle(e, t, r) {
 }
 function _le(e, t) {
   let r = Ele(e);
-  if (Lr(r)) {
+  if (Fr(r)) {
     if (r.length > 1) return !0;
     if (r.length === 1) {
       let a = r[0];
@@ -99077,7 +99079,7 @@ function pu(e, t, r, n, a) {
     if (La(l) || La(E)) throw new A_();
     return Ne([Nx(l), "(", Nx(E), ")"]);
   }
-  let S = s.every((y) => !Lr(y.decorators));
+  let S = s.every((y) => !Fr(y.decorators));
   return h && S ? [l, "(", ...E, ")"] : f ? [l, "(", ...E, ")"] : (XF(u) || Gae(u) || u.type === "TypeAlias" || u.type === "UnionTypeAnnotation" || u.type === "IntersectionTypeAnnotation" || u.type === "FunctionTypeAnnotation" && u.returnType === i) && s.length === 1 && s[0].name === null && i.this !== s[0] && s[0].typeAnnotation && i.typeParameters === null && BA(s[0].typeAnnotation) && !i.rest ? t.arrowParens === "always" || i.type === "HookTypeAnnotation" ? ["(", ...E, ")"] : E : [l, "(", Je([je, ...E]), cr(!Zae(i) && $s(t, "all") ? "," : ""), je, ")"];
 }
 function jB(e) {
@@ -99450,7 +99452,7 @@ function SU(e, t, r) {
   return s.push("}"), s;
 }
 function Zle(e, t, r) {
-  let { node: n } = e, a = Lr(n.directives), i = n.body.some((u) => u.type !== "EmptyStatement"), s = ft(n, Rt.Dangling);
+  let { node: n } = e, a = Fr(n.directives), i = n.body.some((u) => u.type !== "EmptyStatement"), s = ft(n, Rt.Dangling);
   if (!a && !i && !s) return "";
   let l = [];
   return a && (l.push($x(e, t, r, "directives")), (i || s) && (l.push(Xe), Gs(Wr(!1, n.directives, -1), t) && l.push(Xe))), i && l.push($x(e, t, r, "body")), s && l.push(cn(e, t)), l;
@@ -99491,7 +99493,7 @@ function bU(e, t, r) {
 }
 var vU = Hr(["ClassProperty", "PropertyDefinition", "ClassPrivateProperty", "ClassAccessorProperty", "AccessorProperty", "TSAbstractPropertyDefinition", "TSAbstractAccessorProperty"]);
 function TU(e, t, r) {
-  let { node: n } = e, a = [ni(e), $E(e), "class"], i = ft(n.id, Rt.Trailing) || ft(n.typeParameters, Rt.Trailing) || ft(n.superClass) || Lr(n.extends) || Lr(n.mixins) || Lr(n.implements), s = [], l = [];
+  let { node: n } = e, a = [ni(e), $E(e), "class"], i = ft(n.id, Rt.Trailing) || ft(n.typeParameters, Rt.Trailing) || ft(n.superClass) || Fr(n.extends) || Fr(n.mixins) || Fr(n.implements), s = [], l = [];
   if (n.id && s.push(" ", r("id")), s.push(r("typeParameters")), n.superClass) {
     let h = [ace(e, t, r), r(n.superTypeArguments ? "superTypeArguments" : "superTypeParameters")], E = e.call((S) => ["extends ", go(S, h, t)], "superClass");
     i ? l.push(Ct, Ne(E)) : l.push(" ", E);
@@ -99503,7 +99505,7 @@ function TU(e, t, r) {
     xU(n) ? h = [...s, Je(l)] : h = Je([...s, l]), u = CU(n), a.push(Ne(h, { id: u }));
   } else a.push(...s, ...l);
   let f = n.body;
-  return i && Lr(f.body) ? a.push(cr(Xe, " ", { groupId: u })) : a.push(" "), a.push(r("body")), a;
+  return i && Fr(f.body) ? a.push(cr(Xe, " ", { groupId: u })) : a.push(" "), a.push(r("body")), a;
 }
 var CU = yU("heritageGroup");
 function rce(e) {
@@ -99517,7 +99519,7 @@ function xU(e) {
 }
 function bC(e, t, r, n) {
   let { node: a } = e;
-  if (!Lr(a[n])) return "";
+  if (!Fr(a[n])) return "";
   let i = cn(e, t, { marker: n });
   return [xU(a) ? cr(" ", Ct, { groupId: JA(a.typeParameters) }) : Ct, i, i && Xe, n, Ne(Je([Ct, Nr([",", Ct], e.map(r, n))]))];
 }
@@ -99527,11 +99529,11 @@ function ace(e, t, r) {
 }
 function DU(e, t, r) {
   let { node: n } = e, a = [];
-  return Lr(n.decorators) && a.push(BB(e, t, r)), a.push(N_(n)), n.static && a.push("static "), a.push($E(e)), n.override && a.push("override "), a.push(Ux(e, t, r)), a;
+  return Fr(n.decorators) && a.push(BB(e, t, r)), a.push(N_(n)), n.static && a.push("static "), a.push($E(e)), n.override && a.push("override "), a.push(Ux(e, t, r)), a;
 }
 function AU(e, t, r) {
   let { node: n } = e, a = [], i = t.semi ? ";" : "";
-  Lr(n.decorators) && a.push(BB(e, t, r)), a.push(ni(e), N_(n)), n.static && a.push("static "), a.push($E(e)), n.override && a.push("override "), n.readonly && a.push("readonly "), n.variance && a.push(r("variance")), (n.type === "ClassAccessorProperty" || n.type === "AccessorProperty" || n.type === "TSAbstractAccessorProperty") && a.push("accessor "), a.push(Kf(e, t, r), Ga(e), cU(e), ua(e, r));
+  Fr(n.decorators) && a.push(BB(e, t, r)), a.push(ni(e), N_(n)), n.static && a.push("static "), a.push($E(e)), n.override && a.push("override "), n.readonly && a.push("readonly "), n.variance && a.push(r("variance")), (n.type === "ClassAccessorProperty" || n.type === "AccessorProperty" || n.type === "TSAbstractAccessorProperty") && a.push("accessor "), a.push(Kf(e, t, r), Ga(e), cU(e), ua(e, r));
   let s = n.type === "TSAbstractPropertyDefinition" || n.type === "TSAbstractAccessorProperty";
   return [jf(e, t, r, a, " =", s ? void 0 : "value"), i];
 }
@@ -99725,7 +99727,7 @@ function LU(e, t, r) {
   let { node: n } = e;
   if (!FU(n, t)) return "";
   let a = [" "];
-  if (Lr(n.specifiers)) {
+  if (Fr(n.specifiers)) {
     let i = [], s = [];
     e.each(() => {
       let l = e.node.type;
@@ -99737,13 +99739,13 @@ function LU(e, t, r) {
   return a;
 }
 function FU(e, t) {
-  return e.type !== "ImportDeclaration" || Lr(e.specifiers) || e.importKind === "type" ? !0 : eR(t, Gr(e), Gr(e.source)).trimEnd().endsWith("from");
+  return e.type !== "ImportDeclaration" || Fr(e.specifiers) || e.importKind === "type" ? !0 : eR(t, Gr(e), Gr(e.source)).trimEnd().endsWith("from");
 }
 function yce(e, t) {
   var r, n;
   if ((r = e.extra) != null && r.deprecatedAssertSyntax) return "assert";
   let a = eR(t, yr(e.source), (n = e.attributes) != null && n[0] ? Gr(e.attributes[0]) : yr(e)).trimStart();
-  return a.startsWith("assert") ? "assert" : a.startsWith("with") || Lr(e.attributes) ? "with" : void 0;
+  return a.startsWith("assert") ? "assert" : a.startsWith("with") || Fr(e.attributes) ? "with" : void 0;
 }
 function BU(e, t, r) {
   let { node: n } = e;
@@ -99751,7 +99753,7 @@ function BU(e, t, r) {
   let a = yce(n, t);
   if (!a) return "";
   let i = [` ${a} {`];
-  return Lr(n.attributes) && (t.bracketSpacing && i.push(" "), i.push(Nr(", ", e.map(r, "attributes"))), t.bracketSpacing && i.push(" ")), i.push("}"), i;
+  return Fr(n.attributes) && (t.bracketSpacing && i.push(" "), i.push(Nr(", ", e.map(r, "attributes"))), t.bracketSpacing && i.push(" ")), i.push("}"), i;
 }
 function bce(e, t, r) {
   let { node: n } = e, { type: a } = n, i = a.startsWith("Import"), s = i ? "imported" : "local", l = i ? "local" : "exported", u = n[s], f = n[l], h = "", E = "";
@@ -99791,8 +99793,8 @@ function HE(e, t, r) {
   if (D.length === 0) {
     if (!ft(i, Rt.Dangling)) return [C, R, ua(e, r)];
     P = Ne([C, cn(e, t, { indent: !0 }), je, R, Ga(e), ua(e, r)]);
-  } else P = [S && Lr(i.properties) ? rce(h) : "", C, Je([t.bracketSpacing ? Ct : je, ...D]), cr(L && (b !== "," || $s(t)) ? b : ""), t.bracketSpacing ? Ct : je, R, Ga(e), ua(e, r)];
-  return e.match((U) => U.type === "ObjectPattern" && !Lr(U.decorators), vC) || Ol(i) && (e.match(void 0, (U, H) => H === "typeAnnotation", (U, H) => H === "typeAnnotation", vC) || e.match(void 0, (U, H) => U.type === "FunctionTypeParam" && H === "typeAnnotation", vC)) || !y && e.match((U) => U.type === "ObjectPattern", (U) => U.type === "AssignmentExpression" || U.type === "VariableDeclarator") ? P : Ne(P, { shouldBreak: y });
+  } else P = [S && Fr(i.properties) ? rce(h) : "", C, Je([t.bracketSpacing ? Ct : je, ...D]), cr(L && (b !== "," || $s(t)) ? b : ""), t.bracketSpacing ? Ct : je, R, Ga(e), ua(e, r)];
+  return e.match((U) => U.type === "ObjectPattern" && !Fr(U.decorators), vC) || Ol(i) && (e.match(void 0, (U, H) => H === "typeAnnotation", (U, H) => H === "typeAnnotation", vC) || e.match(void 0, (U, H) => U.type === "FunctionTypeParam" && H === "typeAnnotation", vC)) || !y && e.match((U) => U.type === "ObjectPattern", (U) => U.type === "AssignmentExpression" || U.type === "VariableDeclarator") ? P : Ne(P, { shouldBreak: y });
 }
 function vC(e, t) {
   return (t === "params" || t === "parameters" || t === "this" || t === "rest") && jB(e);
@@ -100191,7 +100193,7 @@ function VU(e, t, r) {
   let { node: n } = e, a = [ni(e), "interface"], i = [], s = [];
   n.type !== "InterfaceTypeAnnotation" && i.push(" ", r("id"), r("typeParameters"));
   let l = n.typeParameters && !ft(n.typeParameters, Rt.Trailing | Rt.Line);
-  return Lr(n.extends) && s.push(l ? cr(" ", Ct, { groupId: JA(n.typeParameters) }) : Ct, "extends ", (n.extends.length === 1 ? Kae : Je)(Nr([",", Ct], e.map(r, "extends")))), ft(n.id, Rt.Trailing) || Lr(n.extends) ? l ? a.push(Ne([...i, Je(s)])) : a.push(Ne(Je([...i, ...s]))) : a.push(...i, ...s), a.push(" ", r("body")), Ne(a);
+  return Fr(n.extends) && s.push(l ? cr(" ", Ct, { groupId: JA(n.typeParameters) }) : Ct, "extends ", (n.extends.length === 1 ? Kae : Je)(Nr([",", Ct], e.map(r, "extends")))), ft(n.id, Rt.Trailing) || Fr(n.extends) ? l ? a.push(Ne([...i, Je(s)])) : a.push(Ne(Je([...i, ...s]))) : a.push(...i, ...s), a.push(" ", r("body")), Ne(a);
 }
 function Hce(e) {
   switch (e) {
@@ -100524,7 +100526,7 @@ function Kce(e, t, r, n) {
   if (!i) return "";
   let { node: s } = e;
   if (jce(s)) return i;
-  let l = Lr(s.decorators), u = Kse(e, t, r), f = s.type === "ClassExpression";
+  let l = Fr(s.decorators), u = Kse(e, t, r), f = s.type === "ClassExpression";
   if (l && !f) return Ox(i, (S) => Ne([u, S]));
   let h = du(e, t), E = uce(e, t);
   return !u && !h && !E ? i : Ox(i, (S) => [E ? ";" : "", h ? "(" : "", h && f && l ? [Je([Ct, u, S]), Ct] : [u, S], h ? ")" : ""]);
@@ -105611,8 +105613,8 @@ function X_e() {
     const a = n.target.value;
     Is({ subject: a });
   };
-  return /* @__PURE__ */ A.jsxs($r, { direction: "row", alignItems: "center", spacing: 1, children: [
-    /* @__PURE__ */ A.jsxs($r, { direction: "row", alignItems: "center", spacing: 0.5, sx: { whiteSpace: "nowrap" }, children: [
+  return /* @__PURE__ */ A.jsxs(Lr, { direction: "row", alignItems: "center", spacing: 1, children: [
+    /* @__PURE__ */ A.jsxs(Lr, { direction: "row", alignItems: "center", spacing: 0.5, sx: { whiteSpace: "nowrap" }, children: [
       /* @__PURE__ */ A.jsx(lQ, { sx: { fontSize: "1rem", color: "text.secondary" } }),
       /* @__PURE__ */ A.jsx(Un, { variant: "caption", sx: { fontWeight: 500, color: "text.secondary" }, children: "Subject:" })
     ] }),
@@ -105677,7 +105679,7 @@ function Z_e({
   };
   return /* @__PURE__ */ A.jsx(HQ, { fields: i, children: /* @__PURE__ */ A.jsxs(Rr, { sx: { display: "flex", flexDirection: "column", height: "100%" }, children: [
     /* @__PURE__ */ A.jsx(
-      $r,
+      Lr,
       {
         sx: {
           height: 49,
@@ -105692,12 +105694,12 @@ function Z_e({
         direction: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        children: /* @__PURE__ */ A.jsxs($r, { px: 2, direction: "row", gap: 2, width: "100%", justifyContent: "space-between", alignItems: "center", children: [
-          /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 2, children: [
+        children: /* @__PURE__ */ A.jsxs(Lr, { px: 2, direction: "row", gap: 2, width: "100%", justifyContent: "space-between", alignItems: "center", children: [
+          /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 2, children: [
             /* @__PURE__ */ A.jsx(j_e, { showJsonTab: e }),
             /* @__PURE__ */ A.jsx(X_e, {})
           ] }),
-          /* @__PURE__ */ A.jsxs($r, { direction: "row", spacing: 2, children: [
+          /* @__PURE__ */ A.jsxs(Lr, { direction: "row", spacing: 2, children: [
             a && /* @__PURE__ */ A.jsx(Q_e, {}),
             t && /* @__PURE__ */ A.jsx(K_e, { onSave: s }),
             r && /* @__PURE__ */ A.jsx(zX, {}),

@@ -9,6 +9,7 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
+  Stack,
   ToggleButton,
 } from '@mui/material';
 
@@ -100,53 +101,56 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
 
   return (
     <BaseSidebarPanel title="Global">
-      {/* Backdrop color and Text Color side-by-side */}
-      <Grid container spacing={2}>
-        <Grid item xs={6} sx={{ width: '100%' }}>
-          <ColorInputWithUndo
-            nullable={false}
-            label="Backdrop color"
-            defaultValue={data.backdropColor ?? '#F5F5F5'}
-            onChange={(backdropColor) => updateDataLive({ ...data, backdropColor })}
-            onStartEditing={handleStartEditing}
-            onFinishEditing={handleFinishEditing}
-          />
+      {/* Color pickers grouped together with reduced spacing */}
+      <Stack spacing={2}>
+        {/* Backdrop color and Text Color side-by-side */}
+        <Grid container spacing={2} sx={{ ml: 0 }}>
+          <Grid item xs={6} sx={{ width: '100%', pl: '0 !important' }}>
+            <ColorInputWithUndo
+              nullable={false}
+              label="Backdrop color"
+              defaultValue={data.backdropColor ?? '#F5F5F5'}
+              onChange={(backdropColor) => updateDataLive({ ...data, backdropColor })}
+              onStartEditing={handleStartEditing}
+              onFinishEditing={handleFinishEditing}
+            />
+          </Grid>
+          <Grid item xs={6} sx={{ width: '100%' }}>
+            <ColorInputWithUndo
+              nullable={false}
+              label="Text color"
+              defaultValue={data.textColor ?? '#262626'}
+              onChange={(textColor) => updateDataLive({ ...data, textColor })}
+              onStartEditing={handleStartEditing}
+              onFinishEditing={handleFinishEditing}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={6} sx={{ width: '100%' }}>
-          <ColorInputWithUndo
-            nullable={false}
-            label="Text color"
-            defaultValue={data.textColor ?? '#262626'}
-            onChange={(textColor) => updateDataLive({ ...data, textColor })}
-            onStartEditing={handleStartEditing}
-            onFinishEditing={handleFinishEditing}
-          />
-        </Grid>
-      </Grid>
 
-      {/* Canvas Color and Canvas Border Color side-by-side */}
-      <Grid container spacing={2}>
-        <Grid item xs={6} sx={{ width: '100%' }}>
-          <ColorInputWithUndo
-            nullable={false}
-            label="Canvas color"
-            defaultValue={data.canvasColor ?? '#FFFFFF'}
-            onChange={(canvasColor) => updateDataLive({ ...data, canvasColor })}
-            onStartEditing={handleStartEditing}
-            onFinishEditing={handleFinishEditing}
-          />
+        {/* Canvas Color and Canvas Border Color side-by-side */}
+        <Grid container spacing={2} sx={{ ml: 0 }}>
+          <Grid item xs={6} sx={{ width: '100%', pl: '0 !important' }}>
+            <ColorInputWithUndo
+              nullable={false}
+              label="Canvas color"
+              defaultValue={data.canvasColor ?? '#FFFFFF'}
+              onChange={(canvasColor) => updateDataLive({ ...data, canvasColor })}
+              onStartEditing={handleStartEditing}
+              onFinishEditing={handleFinishEditing}
+            />
+          </Grid>
+          <Grid item xs={6} sx={{ width: '100%' }}>
+            <ColorInputWithUndo
+              nullable={true}
+              label="Canvas border color"
+              defaultValue={data.borderColor ?? null}
+              onChange={(borderColor) => updateDataLive({ ...data, borderColor })}
+              onStartEditing={handleStartEditing}
+              onFinishEditing={handleFinishEditing}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={6} sx={{ width: '100%' }}>
-          <ColorInputWithUndo
-            nullable={true}
-            label="Canvas border color"
-            defaultValue={data.borderColor ?? null}
-            onChange={(borderColor) => updateDataLive({ ...data, borderColor })}
-            onStartEditing={handleStartEditing}
-            onFinishEditing={handleFinishEditing}
-          />
-        </Grid>
-      </Grid>
+      </Stack>
 
       {/* Other controls */}
       <SliderInputWithUndo
