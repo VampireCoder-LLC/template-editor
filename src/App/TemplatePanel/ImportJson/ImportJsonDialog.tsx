@@ -36,7 +36,15 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
   }
 
   return (
-    <Dialog open onClose={onClose}>
+    <Dialog
+      open
+      onClose={onClose}
+      PaperProps={{
+        sx: {
+          borderRadius: 2,
+        },
+      }}
+    >
       <DialogTitle>Import JSON</DialogTitle>
       <form
         onSubmit={(ev) => {

@@ -36,21 +36,24 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
     }
   };
 
-  if (!inspectorDrawerOpen) {
-    return null;
-  }
-
+  // Use absolute positioning to overlay the drawer without affecting canvas width
+  // This prevents the editor canvas from shifting when the drawer toggles
   return (
     <Box
       sx={{
+        position: 'absolute',
+        top: 0,
+        right: inspectorDrawerOpen ? 0 : -INSPECTOR_DRAWER_WIDTH,
         width: INSPECTOR_DRAWER_WIDTH,
         height: '100%',
-        flexShrink: 0,
         borderLeft: '1px solid',
         borderColor: 'divider',
         backgroundColor: 'background.paper',
         display: 'flex',
         flexDirection: 'column',
+        transition: 'right 0.3s ease-in-out',
+        zIndex: 10,
+        boxShadow: inspectorDrawerOpen ? '-2px 0 8px rgba(0, 0, 0, 0.1)' : 'none',
       }}
     >
       <Box sx={{ height: 49, borderBottom: 1, borderColor: 'divider' }}>

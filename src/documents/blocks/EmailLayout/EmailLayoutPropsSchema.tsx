@@ -21,6 +21,11 @@ const FONT_FAMILY_SCHEMA = z
   .nullable()
   .optional();
 
+const CONTENT_WIDTH_SCHEMA = z
+  .enum(['600', '640', '700'])
+  .nullable()
+  .optional();
+
 const EmailLayoutPropsSchema = z.object({
   backdropColor: COLOR_SCHEMA,
   borderColor: COLOR_SCHEMA,
@@ -28,6 +33,7 @@ const EmailLayoutPropsSchema = z.object({
   canvasColor: COLOR_SCHEMA,
   textColor: COLOR_SCHEMA,
   fontFamily: FONT_FAMILY_SCHEMA,
+  contentWidth: CONTENT_WIDTH_SCHEMA,
   childrenIds: z.array(z.string()).optional().nullable(),
 });
 

@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 
 import { RoundedCornerOutlined } from '@mui/icons-material';
-import { Grid } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  ToggleButton,
+} from '@mui/material';
 
 import EmailLayoutPropsSchema, {
   EmailLayoutProps,
@@ -10,6 +19,7 @@ import EmailLayoutPropsSchema, {
 import BaseSidebarPanel from '../InspectorDrawer/ConfigurationPanel/input-panels/helpers/BaseSidebarPanel';
 import ColorInput, { NullableColorInput } from '../InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/ColorInput';
 import { NullableFontFamily } from '../InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/FontFamily';
+import RadioGroupInput from '../InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/RadioGroupInput';
 import SliderInput from '../InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/SliderInput';
 
 type StylesPanelDialogProps = {
@@ -29,6 +39,8 @@ export default function StylesPanelDialog({ document, setDocument }: StylesPanel
   }
 
   const [, setErrors] = useState<any>(null);
+  const [showWidthWarning, setShowWidthWarning] = useState(false);
+  const [pendingWidth, setPendingWidth] = useState<string | null>(null);
 
   const updateData = (d: unknown) => {
     const res = EmailLayoutPropsSchema.safeParse(d);
@@ -38,6 +50,28 @@ export default function StylesPanelDialog({ document, setDocument }: StylesPanel
     } else {
       setErrors(res.error);
     }
+  };
+
+  const handleWidthChange = (contentWidth: string) => {
+    if (contentWidth === '640' || contentWidth === '700') {
+      setPendingWidth(contentWidth);
+      setShowWidthWarning(true);
+    } else {
+      updateData({ ...data, contentWidth });
+    }
+  };
+
+  const handleConfirmWidth = () => {
+    if (pendingWidth) {
+      updateData({ ...data, contentWidth: pendingWidth });
+    }
+    setShowWidthWarning(false);
+    setPendingWidth(null);
+  };
+
+  const handleCancelWidth = () => {
+    setShowWidthWarning(false);
+    setPendingWidth(null);
   };
 
   return (
@@ -90,11 +124,44 @@ export default function StylesPanelDialog({ document, setDocument }: StylesPanel
         defaultValue={data.borderRadius ?? 0}
         onChange={(borderRadius) => updateData({ ...data, borderRadius })}
       />
+      <RadioGroupInput
+        label="Content Width"
+        defaultValue={data.contentWidth ?? '600'}
+        onChange={handleWidthChange}
+      >
+        <ToggleButton value="600">600px</ToggleButton>
+        <ToggleButton value="640">640px</ToggleButton>
+        <ToggleButton value="700">700px</ToggleButton>
+      </RadioGroupInput>
       <NullableFontFamily
         label="Font family"
         defaultValue="MODERN_SANS"
         onChange={(fontFamily) => updateData({ ...data, fontFamily })}
       />
+
+      <Dialog
+        open={showWidthWarning}
+        onClose={handleCancelWidth}
+        PaperProps={{
+          sx: {
+            borderRadius: 2,
+          },
+        }}
+      >
+        <DialogTitle>Content Width Warning</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Choosing a width larger than 600px may cause layout issues in some email clients. Are you sure you want
+            to proceed?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCancelWidth}>Cancel</Button>
+          <Button onClick={handleConfirmWidth} variant="contained" color="primary">
+            Proceed
+          </Button>
+        </DialogActions>
+      </Dialog>
     </BaseSidebarPanel>
   );
 }

@@ -132,7 +132,7 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
   }
 
   return (
-    <Box sx={{ p: 2 }}>
+    <Box sx={{ p: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* Search Field */}
       <TextField
         placeholder="Search fields..."
@@ -143,7 +143,7 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
         InputProps={{
           startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary', fontSize: 18 }} />,
         }}
-        sx={{ mb: 1.5 }}
+        sx={{ mb: 1.5, flexShrink: 0 }}
       />
 
       {/* Fields List */}
@@ -152,7 +152,7 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
           {searchQuery ? 'No fields found' : 'No fields available'}
         </Typography>
       ) : (
-        <List sx={{ p: 0, maxHeight: 300, overflow: 'auto' }}>
+        <List sx={{ p: 0, flex: 1, overflow: 'visible' }}>
           {filteredFields.map((field) => (
             <ListItem key={field.name} disablePadding sx={{ mb: 0.5 }}>
               <ListItemButton
@@ -219,7 +219,7 @@ export default function TemplateFieldsSection({ fields }: TemplateFieldsSectionP
       )}
 
       {/* Footer Info */}
-      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1, flexShrink: 0 }}>
         Click a field to insert it at your cursor
       </Typography>
     </Box>

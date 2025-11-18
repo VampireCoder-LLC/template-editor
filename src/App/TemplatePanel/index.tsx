@@ -169,7 +169,7 @@ export default function TemplatePanel({
             </Stack>
           </Stack>
         </Stack>
-        <Box sx={{ display: 'flex', height: 'calc(100vh - 49px)', overflow: 'hidden' }}>
+        <Box sx={{ position: 'relative', display: 'flex', height: 'calc(100vh - 49px)', overflow: 'hidden' }}>
           <Box sx={{ flex: 1, overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
           <InspectorDrawer templateFields={templateFields} />
         </Box>

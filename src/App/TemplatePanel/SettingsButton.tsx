@@ -42,6 +42,7 @@ export default function SettingsButton() {
           sx: {
             width: 360,
             maxHeight: '90vh',
+            borderRadius: 2,
           },
         }}
       >
