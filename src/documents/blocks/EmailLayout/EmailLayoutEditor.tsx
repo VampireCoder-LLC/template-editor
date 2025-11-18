@@ -5,6 +5,7 @@ import { setDocument, setSelectedBlockId, useDocument } from '../../editor/Edito
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
 import { EmailLayoutProps } from './EmailLayoutPropsSchema';
+import { buildBoxShadow } from './helpers';
 
 function getFontFamily(fontFamily: EmailLayoutProps['fontFamily']) {
   const f = fontFamily ?? 'MODERN_SANS';
@@ -69,6 +70,7 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
             }
             return `1px solid ${v}`;
           })(),
+          boxShadow: buildBoxShadow(props.shadowColor, props.shadowSize, props.shadowOpacity),
         }}
         role="presentation"
         cellSpacing="0"

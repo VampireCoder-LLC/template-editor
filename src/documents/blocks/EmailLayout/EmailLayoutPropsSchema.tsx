@@ -34,6 +34,9 @@ const EmailLayoutPropsSchema = z.object({
   textColor: COLOR_SCHEMA,
   fontFamily: FONT_FAMILY_SCHEMA,
   contentWidth: CONTENT_WIDTH_SCHEMA,
+  shadowColor: COLOR_SCHEMA,
+  shadowSize: z.number().min(0).max(32).optional().nullable(),
+  shadowOpacity: z.number().min(0).max(1).optional().nullable(),
   childrenIds: z.array(z.string()).optional().nullable(),
 });
 

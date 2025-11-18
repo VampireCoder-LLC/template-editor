@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { RoundedCornerOutlined } from '@mui/icons-material';
+import { BlurOnOutlined, OpacityOutlined, RoundedCornerOutlined } from '@mui/icons-material';
 import {
   Button,
   Dialog,
@@ -123,6 +123,33 @@ export default function StylesPanelDialog({ document, setDocument }: StylesPanel
         label="Canvas border radius"
         defaultValue={data.borderRadius ?? 0}
         onChange={(borderRadius) => updateData({ ...data, borderRadius })}
+      />
+      <NullableColorInput
+        label="Canvas shadow color"
+        defaultValue={data.shadowColor ?? null}
+        onChange={(shadowColor) => updateData({ ...data, shadowColor })}
+      />
+      <SliderInput
+        iconLabel={<BlurOnOutlined />}
+        units="px"
+        step={2}
+        marks
+        min={0}
+        max={32}
+        label="Canvas shadow size"
+        defaultValue={data.shadowSize ?? 16}
+        onChange={(shadowSize) => updateData({ ...data, shadowSize })}
+      />
+      <SliderInput
+        iconLabel={<OpacityOutlined />}
+        units=""
+        step={0.1}
+        marks
+        min={0}
+        max={1}
+        label="Canvas shadow opacity"
+        defaultValue={data.shadowOpacity ?? 0.15}
+        onChange={(shadowOpacity) => updateData({ ...data, shadowOpacity })}
       />
       <RadioGroupInput
         label="Content Width"

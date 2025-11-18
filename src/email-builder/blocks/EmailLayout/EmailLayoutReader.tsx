@@ -3,6 +3,7 @@ import React from 'react';
 import { ReaderBlock } from '../../Reader/core';
 
 import { EmailLayoutProps } from './EmailLayoutPropsSchema';
+import { buildBoxShadow } from './helpers';
 
 function getFontFamily(fontFamily: EmailLayoutProps['fontFamily']) {
   const f = fontFamily ?? 'MODERN_SANS';
@@ -62,6 +63,7 @@ export default function EmailLayoutReader(props: EmailLayoutProps) {
           backgroundColor: props.canvasColor ?? '#FFFFFF',
           borderRadius: props.borderRadius ?? undefined,
           border: getBorder(props),
+          boxShadow: buildBoxShadow(props.shadowColor, props.shadowSize, props.shadowOpacity),
         }}
         role="presentation"
         cellSpacing="0"
