@@ -39,7 +39,7 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
   return (
     <div
       onClick={() => {
-        setSelectedBlockId(null);
+        setSelectedBlockId('root');
       }}
       style={{
         backgroundColor: props.backdropColor ?? '#F5F5F5',
