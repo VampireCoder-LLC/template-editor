@@ -3,22 +3,22 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Box, IconButton, Stack, Tab, Tabs, Tooltip } from '@mui/material';
 import { RedoOutlined, UndoOutlined } from '@mui/icons-material';
 
-import { setDocument, setSidebarTab, useInspectorDrawerOpen, useSelectedBlockId, useSelectedSidebarTab, useDocument } from '../../documents/editor/EditorContext';
+import { setDocument, setSidebarTab, useConfigurationDrawerOpen, useSelectedBlockId, useSelectedSidebarTab, useDocument } from '../../documents/editor/EditorContext';
 import { EmailLayoutProps } from '../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
 
 import ConfigurationPanel from './ConfigurationPanel';
 import TemplateFieldsSection, { TemplateField } from './TemplateFieldsSection';
 import { UndoRedoControls, UndoRedoProvider } from './UndoRedoContext';
 
-export const INSPECTOR_DRAWER_WIDTH = 400;
+export const CONFIGURATION_DRAWER_WIDTH = 400;
 
-interface InspectorDrawerProps {
+interface ConfigurationDrawerProps {
   templateFields?: (string | TemplateField)[];
 }
 
-export default function InspectorDrawer({ templateFields = [] }: InspectorDrawerProps) {
+export default function ConfigurationDrawer({ templateFields = [] }: ConfigurationDrawerProps) {
   const selectedSidebarTab = useSelectedSidebarTab();
-  const inspectorDrawerOpen = useInspectorDrawerOpen();
+  const configurationDrawerOpen = useConfigurationDrawerOpen();
   const selectedBlockId = useSelectedBlockId();
   const document = useDocument();
 
@@ -150,8 +150,8 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
         sx={{
           position: 'absolute',
           top: 0,
-          right: inspectorDrawerOpen ? 0 : -INSPECTOR_DRAWER_WIDTH,
-          width: INSPECTOR_DRAWER_WIDTH,
+          right: configurationDrawerOpen ? 0 : -CONFIGURATION_DRAWER_WIDTH,
+          width: CONFIGURATION_DRAWER_WIDTH,
           height: '100%',
           borderLeft: '1px solid',
           borderColor: 'divider',
@@ -160,7 +160,7 @@ export default function InspectorDrawer({ templateFields = [] }: InspectorDrawer
           flexDirection: 'column',
           transition: 'right 0.3s ease-in-out',
           zIndex: 10,
-          boxShadow: inspectorDrawerOpen ? '-2px 0 8px rgba(0, 0, 0, 0.1)' : 'none',
+          boxShadow: configurationDrawerOpen ? '-2px 0 8px rgba(0, 0, 0, 0.1)' : 'none',
         }}
       >
         <Box sx={{ height: 49, borderBottom: 1, borderColor: 'divider' }}>

@@ -12,7 +12,7 @@ import {
   useSelectedScreenSize,
 } from '../../documents/editor/EditorContext';
 import { TemplateFieldsProvider } from '../../documents/editor/TemplateFieldsContext';
-import InspectorDrawer from '../InspectorDrawer';
+import ConfigurationDrawer from '../ConfigurationDrawer';
 import DownloadJson from './DownloadJson';
 import HtmlPanel from './HtmlPanel';
 import ImportJson from './ImportJson';
@@ -171,7 +171,7 @@ export default function TemplatePanel({
         </Stack>
         <Box sx={{ position: 'relative', display: 'flex', height: 'calc(100vh - 49px)', overflow: 'hidden' }}>
           <Box sx={{ flex: 1, overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
-          <InspectorDrawer templateFields={templateFields} />
+          <ConfigurationDrawer templateFields={templateFields} />
         </Box>
       </Box>
     </TemplateFieldsProvider>

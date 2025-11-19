@@ -25,7 +25,7 @@ type TValue = {
   selectedMainTab: 'editor' | 'preview' | 'json' | 'html';
   selectedScreenSize: 'desktop' | 'mobile';
 
-  inspectorDrawerOpen: boolean;
+  configurationDrawerOpen: boolean;
 };
 
 const editorStateStore = create<TValue>(() => ({
@@ -35,7 +35,7 @@ const editorStateStore = create<TValue>(() => ({
   selectedMainTab: 'editor',
   selectedScreenSize: 'desktop',
 
-  inspectorDrawerOpen: false,
+  configurationDrawerOpen: false,
 }));
 
 export function useDocument() {
@@ -62,17 +62,17 @@ export function useSelectedSidebarTab() {
   return editorStateStore((s) => s.selectedSidebarTab);
 }
 
-export function useInspectorDrawerOpen() {
-  return editorStateStore((s) => s.inspectorDrawerOpen);
+export function useConfigurationDrawerOpen() {
+  return editorStateStore((s) => s.configurationDrawerOpen);
 }
 
 export function setSelectedBlockId(selectedBlockId: TValue['selectedBlockId']) {
   const selectedSidebarTab = selectedBlockId === null ? 'block-configuration' : 'block-configuration';
-  const inspectorDrawerOpen = selectedBlockId !== null;
+  const configurationDrawerOpen = selectedBlockId !== null;
   return editorStateStore.setState({
     selectedBlockId,
     selectedSidebarTab,
-    inspectorDrawerOpen,
+    configurationDrawerOpen,
   });
 }
 
@@ -83,12 +83,12 @@ export function setSidebarTab(selectedSidebarTab: TValue['selectedSidebarTab']) 
 export function resetDocument(document: TValue['document'], selectedBlockId?: string | null) {
   const finalSelectedBlockId = selectedBlockId ?? null;
   const selectedSidebarTab = finalSelectedBlockId === null ? 'block-configuration' : 'block-configuration';
-  const inspectorDrawerOpen = finalSelectedBlockId !== null;
+  const configurationDrawerOpen = finalSelectedBlockId !== null;
   return editorStateStore.setState({
     document,
     selectedSidebarTab,
     selectedBlockId: finalSelectedBlockId,
-    inspectorDrawerOpen,
+    configurationDrawerOpen,
   });
 }
 
@@ -102,9 +102,9 @@ export function setDocument(document: TValue['document']) {
   });
 }
 
-export function toggleInspectorDrawerOpen() {
-  const inspectorDrawerOpen = !editorStateStore.getState().inspectorDrawerOpen;
-  return editorStateStore.setState({ inspectorDrawerOpen });
+export function toggleConfigurationDrawerOpen() {
+  const configurationDrawerOpen = !editorStateStore.getState().configurationDrawerOpen;
+  return editorStateStore.setState({ configurationDrawerOpen });
 }
 
 export function setSelectedScreenSize(selectedScreenSize: TValue['selectedScreenSize']) {

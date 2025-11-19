@@ -36621,7 +36621,7 @@ const Ci = RK(() => ({
   selectedSidebarTab: "block-configuration",
   selectedMainTab: "editor",
   selectedScreenSize: "desktop",
-  inspectorDrawerOpen: !1
+  configurationDrawerOpen: !1
 }));
 function oi() {
   return Ci((e) => e.document);
@@ -36642,14 +36642,14 @@ function IK() {
   return Ci((e) => e.selectedSidebarTab);
 }
 function wK() {
-  return Ci((e) => e.inspectorDrawerOpen);
+  return Ci((e) => e.configurationDrawerOpen);
 }
 function jc(e) {
   const t = "block-configuration", r = e !== null;
   return Ci.setState({
     selectedBlockId: e,
     selectedSidebarTab: t,
-    inspectorDrawerOpen: r
+    configurationDrawerOpen: r
   });
 }
 function PK(e) {
@@ -36661,7 +36661,7 @@ function Sx(e, t) {
     document: e,
     selectedSidebarTab: n,
     selectedBlockId: r,
-    inspectorDrawerOpen: a
+    configurationDrawerOpen: a
   });
 }
 function Is(e) {

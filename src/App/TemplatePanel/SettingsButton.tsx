@@ -7,7 +7,7 @@ import { setSelectedBlockId } from '../../documents/editor/EditorContext';
 
 export default function SettingsButton() {
   const handleOpen = () => {
-    // Select the root EmailLayout block to open the Inspector Drawer with global settings
+    // Select the root EmailLayout block to open the Configuration Drawer with global settings
     setSelectedBlockId('root');
   };
 
