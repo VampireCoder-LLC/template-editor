@@ -39,7 +39,9 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
   return (
     <div
       onClick={() => {
-        setSelectedBlockId('root');
+        // Clicking the EmailLayout background should deselect all blocks and close the drawer
+        // EmailLayout settings are accessible via the Settings button in the toolbar
+        setSelectedBlockId(null);
       }}
       style={{
         backgroundColor: props.backdropColor ?? '#F5F5F5',

@@ -25,6 +25,9 @@ chrome-user-data
 *.swo
 /tmp
 
+# Build artifacts and analysis
+dist/stats.html
+
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
 packages/react-devtools-extensions/chrome/*.crx

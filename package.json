@@ -1,6 +1,6 @@
 {
   "name": "@vampirecoder/template-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "A reusable React component library for building and editing email templates",
   "main": "./dist/template-editor.ujs",
@@ -23,13 +23,13 @@
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "@mui/material": "^5.15.0",
+    "@mui/icons-material": "^5.15.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.10",
-    "@mui/material": "^5.15.10",
     "highlight.js": "^11.9.0",
     "insane": "^2.6.2",
     "marked": "^16.4.1",
@@ -49,6 +49,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-simple-import-sort": "^12.0.0",
+    "rollup-plugin-visualizer": "^6.0.5",
     "typescript": "^5.2.2",
     "vite": "^5.1.0"
   },

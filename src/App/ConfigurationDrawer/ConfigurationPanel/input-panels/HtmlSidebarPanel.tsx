@@ -30,6 +30,7 @@ export default function HtmlSidebarPanel({ data, setData }: HtmlSidebarPanelProp
         rows={5}
         defaultValue={data.props?.contents ?? ''}
         onChange={(contents) => updateData({ ...data, props: { ...data.props, contents } })}
+        enableTemplateFieldsContextMenu={true}
       />
       <MultiStylePropertyPanel
         names={['color', 'backgroundColor', 'fontFamily', 'fontSize', 'fontStyle', 'textAlign', 'padding']}

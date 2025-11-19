@@ -1,23 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Box, IconButton, Stack, Tab, Tabs, Tooltip } from '@mui/material';
+import { Box, IconButton, Stack, Tooltip } from '@mui/material';
 import { RedoOutlined, UndoOutlined } from '@mui/icons-material';
 
-import { setDocument, setSidebarTab, useConfigurationDrawerOpen, useSelectedBlockId, useSelectedSidebarTab, useDocument } from '../../documents/editor/EditorContext';
+import { setDocument, useConfigurationDrawerOpen, useSelectedBlockId, useDocument } from '../../documents/editor/EditorContext';
 import { EmailLayoutProps } from '../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
 
 import ConfigurationPanel from './ConfigurationPanel';
-import TemplateFieldsSection, { TemplateField } from './TemplateFieldsSection';
 import { UndoRedoControls, UndoRedoProvider } from './UndoRedoContext';
 
 export const CONFIGURATION_DRAWER_WIDTH = 400;
 
-interface ConfigurationDrawerProps {
-  templateFields?: (string | TemplateField)[];
-}
-
-export default function ConfigurationDrawer({ templateFields = [] }: ConfigurationDrawerProps) {
-  const selectedSidebarTab = useSelectedSidebarTab();
+export default function ConfigurationDrawer() {
   const configurationDrawerOpen = useConfigurationDrawerOpen();
   const selectedBlockId = useSelectedBlockId();
   const document = useDocument();
@@ -25,12 +19,6 @@ export default function ConfigurationDrawer({ templateFields = [] }: Configurati
   // Get the selected block's type
   const selectedBlock = selectedBlockId ? document[selectedBlockId] : null;
   const selectedBlockType = selectedBlock?.type;
-
-  // Only show Template Fields tab for Html, Text, and Heading blocks
-  const showTemplateFieldsTab =
-    selectedBlockId &&
-    templateFields.length > 0 &&
-    (selectedBlockType === 'Html' || selectedBlockType === 'Text' || selectedBlockType === 'Heading');
 
   // Undo/Redo state management for EmailLayout
   const undoStackRef = useRef<EmailLayoutProps[]>([]);
@@ -133,15 +121,6 @@ export default function ConfigurationDrawer({ templateFields = [] }: Configurati
         }
       : null;
 
-  const renderCurrentSidebarPanel = () => {
-    switch (selectedSidebarTab) {
-      case 'block-configuration':
-        return <ConfigurationPanel />;
-      case 'template-fields':
-        return templateFields.length > 0 ? <TemplateFieldsSection fields={templateFields} /> : null;
-    }
-  };
-
   // Use absolute positioning to overlay the drawer without affecting canvas width
   // This prevents the editor canvas from shifting when the drawer toggles
   return (
@@ -163,15 +142,10 @@ export default function ConfigurationDrawer({ templateFields = [] }: Configurati
           boxShadow: configurationDrawerOpen ? '-2px 0 8px rgba(0, 0, 0, 0.1)' : 'none',
         }}
       >
-        <Box sx={{ height: 49, borderBottom: 1, borderColor: 'divider' }}>
-          <Stack direction="row" alignItems="center" justifyContent="space-between" px={2} height="100%">
-            <Tabs value={selectedSidebarTab} onChange={(_, v) => setSidebarTab(v)}>
-              {selectedBlockId && <Tab value="block-configuration" label="Configuration" />}
-              {showTemplateFieldsTab && <Tab value="template-fields" label="Template Fields" />}
-            </Tabs>
-
-            {/* Show undo/redo buttons only when EmailLayout (root) is selected */}
-            {undoRedoControls && (
+        {/* Show header with undo/redo buttons only when EmailLayout (root) is selected */}
+        {undoRedoControls && (
+          <Box sx={{ height: 49, borderBottom: 1, borderColor: 'divider' }}>
+            <Stack direction="row" alignItems="center" justifyContent="flex-end" px={2} height="100%">
               <Stack direction="row" spacing={0.5}>
                 <Tooltip title="Undo">
                   <span>
@@ -188,12 +162,12 @@ export default function ConfigurationDrawer({ templateFields = [] }: Configurati
                   </span>
                 </Tooltip>
               </Stack>
-            )}
-          </Stack>
-        </Box>
+            </Stack>
+          </Box>
+        )}
         <Box
           sx={{
-            height: 'calc(100% - 49px)',
+            height: undoRedoControls ? 'calc(100% - 49px)' : '100%',
             overflowX: 'hidden',
             overflowY: 'auto',
             // Custom scrollbar styling - thin, auto-hide, fade-out
@@ -217,7 +191,7 @@ export default function ConfigurationDrawer({ templateFields = [] }: Configurati
           }}
         >
           {/* Main Panel Content */}
-          {renderCurrentSidebarPanel()}
+          <ConfigurationPanel />
         </Box>
       </Box>
     </UndoRedoProvider>
