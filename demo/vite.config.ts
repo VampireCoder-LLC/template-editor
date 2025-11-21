@@ -8,5 +8,31 @@ export default defineConfig({
     port: 5173,
     open: true,
   },
+  resolve: {
+    dedupe: [
+      'react', 
+      'react-dom', 
+      'react/jsx-runtime',
+      '@emotion/react',
+      '@emotion/styled',
+      '@mui/material',
+      '@mui/icons-material',
+      'react-colorful',
+      'zustand'
+    ],
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      '@emotion/react',
+      '@emotion/styled',
+      '@mui/material',
+      '@mui/icons-material',
+      'react-colorful',
+      'zustand'
+    ],
+  },
 })
 

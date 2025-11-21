@@ -27,3 +27,6 @@ export type { TReaderBlock, TReaderDocument } from './email-builder/Reader/core'
 // Editor types (for advanced users)
 export type { TEditorConfiguration, TEditorBlock } from './documents/editor/core';
 
+// Version information
+export { VERSION, BUILD_NUMBER, BUILD_TIME } from './version';
+

@@ -67,16 +67,23 @@ function sanitizer(html: string): string {
 }
 
 class CustomRenderer extends Renderer {
-  table(header: string, body: string) {
+  table(token: any) {
+    const header = token.header;
+    const body = token.rows;
     return `<table width="100%">
 <thead>
-${header}</thead>
+${this.tablerow({ text: header })}
+</thead>
 <tbody>
-${body}</tbody>
+${body.map((row: any) => this.tablerow({ text: row })).join('')}
+</tbody>
 </table>`;
   }
 
-  link(href: string, title: string | null, text: string) {
+  link(token: any) {
+    const href = token.href;
+    const title = token.title;
+    const text = token.text;
     if (!title) {
       return `<a href="${href}" target="_blank">${text}</a>`;
     }

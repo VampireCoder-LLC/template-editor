@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TemplateEditor, TemplateSaveOutput, TEditorConfiguration, TemplateField } from '@vampirecoder/template-editor'
+import { TemplateEditor, TemplateSaveOutput, TEditorConfiguration, TemplateField, VERSION, BUILD_NUMBER, BUILD_TIME } from '@vampirecoder/template-editor'
 import './App.css'
 
 // Sample initial template data
@@ -65,6 +65,15 @@ function App() {
 
   return (
     <div className="app-container">
+      <div className="version-info">
+        <h3>📦 Template Editor Library Info</h3>
+        <div className="version-details">
+          <span><strong>Version:</strong> {VERSION}</span>
+          <span><strong>Build Number:</strong> {BUILD_NUMBER}</span>
+          <span><strong>Build Time:</strong> {new Date(BUILD_TIME).toLocaleString()}</span>
+        </div>
+      </div>
+
       <div className="controls">
         <label>
           <input
