@@ -20,43 +20,66 @@ export default defineConfig({
       brotliSize: true,
     }),
   ],
+
   base: '/',
   server: {
     port: 8141,
   },
+
   build: {
     lib: {
       entry: 'src/index.ts',
       name: 'TemplateEditor',
       formats: ['es', 'umd'],
-      fileName: (format) => `template-editor.${format === 'es' ? 'mjs' : 'ujs'}`,
+      fileName: (format) =>
+        `template-editor.${format === 'es' ? 'mjs' : 'ujs'}`,
     },
+
     rollupOptions: {
       external: [
+        // React must always be external
         'react',
         'react-dom',
         'react/jsx-runtime',
+
+        // React 19 SSR API
+        'react-dom/server.edge',
+
+        // UI deps must not be bundled
         '@mui/material',
         '@mui/icons-material',
         '@emotion/react',
         '@emotion/styled',
         'react-colorful',
         'zustand',
+
+        // required fix for React 19 + MUI deepmerge
+        'react-is',
       ],
+
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime',
+          'react-dom/server.edge': 'ReactDOMServer',
+
           '@mui/material': 'MaterialUI',
           '@mui/icons-material': 'MaterialUIIcons',
           '@emotion/react': 'emotionReact',
           '@emotion/styled': 'emotionStyled',
           'react-colorful': 'ReactColorful',
-          'zustand': 'Zustand',
+          zustand: 'Zustand',
+          'react-is': 'ReactIs',
         },
       },
     },
+
     emptyOutDir: true,
+
+    // Prevent Vite from optimizing or prebundling React
+    commonjsOptions: {
+      exclude: [/react/, /react-dom/],
+    },
   },
 });
