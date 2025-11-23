@@ -40,6 +40,7 @@ export default defineConfig({
         // React must always be external
         'react',
         'react-dom',
+        'react-dom/client',
         'react/jsx-runtime',
 
         // React 19 SSR API
@@ -61,6 +62,7 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'react-dom/client': 'ReactDOMClient',
           'react/jsx-runtime': 'jsxRuntime',
           'react-dom/server.edge': 'ReactDOMServer',
 
