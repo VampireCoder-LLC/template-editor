@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ZodError } from 'zod';
 
 import { BlurOnOutlined, OpacityOutlined, RoundedCornerOutlined } from '@mui/icons-material';
 import {
@@ -30,7 +31,7 @@ type EmailLayoutSidebarFieldsProps = {
 };
 
 export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutSidebarFieldsProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
   const [showWidthWarning, setShowWidthWarning] = useState(false);
   const [pendingWidth, setPendingWidth] = useState<string | null>(null);
 

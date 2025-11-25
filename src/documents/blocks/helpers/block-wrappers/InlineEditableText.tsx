@@ -3,7 +3,7 @@ import { Box, Tooltip } from '@mui/material';
 import { setDocument, setSelectedBlockId, useDocument, useSelectedBlockId } from '../../../editor/EditorContext';
 import { useCurrentBlockId } from '../../../editor/EditorBlock';
 import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
-import TemplateFieldContextMenu from '../TemplateFieldContextMenu';
+import TemplateFieldFloatingButton from '../TemplateFieldFloatingButton';
 
 type InlineEditableTextProps = {
   children: JSX.Element;
@@ -18,11 +18,18 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
   const templateFields = useTemplateFields();
   const [isEditing, setIsEditing] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [contextMenuPosition, setContextMenuPosition] = useState<{ top: number; left: number } | null>(null);
   const savedSelectionRef = useRef<Range | null>(null);
   const isInsertingFieldRef = useRef(false);
   const pendingCursorPositionRef = useRef<number | null>(null);
+
+  // Floating button state
+  const [showFloatingButton, setShowFloatingButton] = useState(false);
+  const [floatingButtonPosition, setFloatingButtonPosition] = useState<{ top: number; left: number } | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const isSelected = selectedBlockId === blockId;
   const currentText = block?.data?.props?.text ?? '';
@@ -57,23 +64,51 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
     }
   };
 
-  // Handle context menu (right-click)
-  const handleContextMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Only show context menu when editing
-    if (isEditing) {
-      e.preventDefault();
-      e.stopPropagation();
+  // Update floating button position based on cursor
+  const updateFloatingButtonPosition = () => {
+    if (!contentRef.current || !containerRef.current || !isEditing) return;
 
-      // Save the current selection/cursor position
-      const selection = window.getSelection();
-      if (selection && selection.rangeCount > 0) {
-        savedSelectionRef.current = selection.getRangeAt(0).cloneRange();
-      }
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
 
-      setContextMenuPosition({
-        top: e.clientY,
-        left: e.clientX,
-      });
+    // Save the current selection
+    savedSelectionRef.current = selection.getRangeAt(0).cloneRange();
+
+    // Get the bounding rect of the selection
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    const containerRect = containerRef.current.getBoundingClientRect();
+
+    // Position button to the right of the cursor
+    const top = rect.top - containerRect.top;
+    const left = rect.right - containerRect.left + 8; // 8px offset
+
+    setFloatingButtonPosition({ top, left });
+  };
+
+  // Handle input events to track typing
+  const handleInput = () => {
+    // Mark as typing
+    setIsTyping(true);
+
+    // Clear existing timeout
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+
+    // Set timeout to mark as not typing after 500ms
+    typingTimeoutRef.current = setTimeout(() => {
+      setIsTyping(false);
+    }, 500);
+
+    // Update button position
+    updateFloatingButtonPosition();
+  };
+
+  // Handle selection change (cursor movement)
+  const handleSelectionChange = () => {
+    if (isEditing && document.activeElement === contentRef.current) {
+      updateFloatingButtonPosition();
     }
   };
 
@@ -83,9 +118,6 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
     isInsertingFieldRef.current = true;
 
     const handlebarsText = `{{${fieldName}}}`;
-
-    // Close the context menu first
-    setContextMenuPosition(null);
 
     // Use setTimeout to ensure the menu closes and focus is restored properly
     setTimeout(() => {
@@ -101,8 +133,23 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
           const startOffset = range.startOffset;
           const startContainer = range.startContainer;
 
+          // Check if we need to add space before the field
+          const textBefore = startContainer.textContent?.substring(0, startOffset) || '';
+          const needsSpaceBefore = startOffset > 0 && textBefore[textBefore.length - 1] !== ' ';
+
+          // Check if we need to add space after the field
+          const textAfter = startContainer.textContent?.substring(startOffset) || '';
+          const charAfter = textAfter.length > 0 ? textAfter[0] : '';
+
+          // Don't add space after if cursor is before these characters or at end of string
+          const noSpaceAfterChars = [' ', '.', ',', ':', ';', '<', '>', '(', ')', '!', '?'];
+          const needsSpaceAfter = charAfter !== '' && !noSpaceAfterChars.includes(charAfter);
+
+          // Build the text to insert with proper spacing
+          const textToInsert = (needsSpaceBefore ? ' ' : '') + handlebarsText + (needsSpaceAfter ? ' ' : '');
+
           range.deleteContents();
-          const textNode = document.createTextNode(handlebarsText);
+          const textNode = document.createTextNode(textToInsert);
           range.insertNode(textNode);
 
           // Calculate the cursor position in the text content
@@ -121,11 +168,11 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
           while (treeWalker.nextNode()) {
             const node = treeWalker.currentNode;
             if (node === startContainer) {
-              cursorPosition += startOffset + handlebarsText.length;
+              cursorPosition += startOffset + textToInsert.length;
               foundInsertionPoint = true;
               break;
             } else if (node === textNode) {
-              cursorPosition += handlebarsText.length;
+              cursorPosition += textToInsert.length;
               foundInsertionPoint = true;
               break;
             } else {
@@ -138,7 +185,7 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
             // Find where the handlebars text was inserted
             const insertedIndex = newText.indexOf(handlebarsText);
             if (insertedIndex !== -1) {
-              cursorPosition = insertedIndex + handlebarsText.length;
+              cursorPosition = insertedIndex + textToInsert.length;
             }
           }
 
@@ -168,6 +215,13 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
     }, 0);
   };
 
+  // Helper function to normalize text spacing
+  const normalizeText = (text: string): string => {
+    return text
+      .trim() // Remove leading and trailing spaces
+      .replace(/\s+/g, ' '); // Replace multiple consecutive spaces with a single space
+  };
+
   // Handle blur to save changes
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
     // Don't blur if we're currently inserting a field
@@ -176,46 +230,46 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
       return;
     }
 
-    // Don't blur if the context menu is open
-    if (contextMenuPosition !== null) {
-      e.preventDefault();
-      return;
-    }
+    // Delay to allow clicking the floating button
+    setTimeout(() => {
+      // Don't exit editing mode if menu is open
+      if (isMenuOpen) {
+        return;
+      }
 
-    // Don't blur if clicking on the context menu
-    if (e.relatedTarget && (e.relatedTarget as HTMLElement).closest('[role="menu"]')) {
-      return;
-    }
+      const newText = contentRef.current?.textContent || '';
+      const normalizedText = normalizeText(newText);
 
-    const newText = contentRef.current?.textContent || '';
-    if (newText !== currentText) {
-      setDocument({
-        [blockId]: {
-          ...block,
-          data: {
-            ...block.data,
-            props: {
-              ...block.data.props,
-              text: newText,
+      if (normalizedText !== currentText) {
+        // Update the content with normalized text
+        if (contentRef.current) {
+          contentRef.current.textContent = normalizedText;
+        }
+
+        setDocument({
+          [blockId]: {
+            ...block,
+            data: {
+              ...block.data,
+              props: {
+                ...block.data.props,
+                text: normalizedText,
+              },
             },
-          },
-        },
-      });
-    }
-    setIsEditing(false);
-    setContextMenuPosition(null);
+          } as any,
+        });
+      }
+      setIsEditing(false);
+      setShowFloatingButton(false);
+    }, 200);
   };
 
   // Handle key events
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Escape') {
       e.preventDefault();
-      // Close context menu if open, otherwise exit edit mode
-      if (contextMenuPosition) {
-        setContextMenuPosition(null);
-      } else {
-        setIsEditing(false);
-      }
+      setIsEditing(false);
+      setShowFloatingButton(false);
     } else if (e.key === 'Enter' && !e.shiftKey && blockType === 'Heading') {
       // For headings, Enter saves
       e.preventDefault();
@@ -231,11 +285,11 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
                 text: newText,
               },
             },
-          },
+          } as any,
         });
       }
       setIsEditing(false);
-      setContextMenuPosition(null);
+      setShowFloatingButton(false);
     }
   };
 
@@ -250,7 +304,21 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
       const sel = window.getSelection();
       sel?.removeAllRanges();
       sel?.addRange(range);
+
+      // Show floating button and update position
+      setShowFloatingButton(true);
+      updateFloatingButtonPosition();
+
+      // Add selection change listener
+      document.addEventListener('selectionchange', handleSelectionChange);
+    } else {
+      // Remove selection change listener when not editing
+      document.removeEventListener('selectionchange', handleSelectionChange);
     }
+
+    return () => {
+      document.removeEventListener('selectionchange', handleSelectionChange);
+    };
   }, [isEditing]);
 
   // Restore cursor position after field insertion (triggered by text change)
@@ -305,52 +373,57 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
       if (clickTimeoutRef.current) {
         clearTimeout(clickTimeoutRef.current);
       }
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
+      }
     };
   }, []);
 
   // When editing, show raw text; when not editing, show rendered component
   if (isEditing) {
     return (
-      <>
-        <Tooltip title="Right-click to insert template fields" placement="top">
-          <Box
-            ref={contentRef}
-            onClick={handleClick}
-            onContextMenu={handleContextMenu}
-            contentEditable={true}
-            suppressContentEditableWarning
-            onBlur={handleBlur}
-            onKeyDown={handleKeyDown}
-            sx={{
-              cursor: 'text',
-              outline: '2px solid #0079cc',
-              outlineOffset: '-2px',
-              wordWrap: 'break-word',
-              whiteSpace: 'pre-wrap',
-              boxSizing: 'border-box',
-              // Apply same padding/styling as the rendered component for consistency
-              padding: block?.data?.style?.padding
-                ? `${block.data.style.padding.top}px ${block.data.style.padding.right}px ${block.data.style.padding.bottom}px ${block.data.style.padding.left}px`
-                : undefined,
-              color: block?.data?.style?.color ?? undefined,
-              backgroundColor: block?.data?.style?.backgroundColor ?? undefined,
-              fontSize: block?.data?.style?.fontSize ?? undefined,
-              fontFamily: block?.data?.style?.fontFamily ?? undefined,
-              fontWeight: block?.data?.style?.fontWeight ?? undefined,
-              fontStyle: block?.data?.style?.fontStyle ?? undefined,
-              textAlign: block?.data?.style?.textAlign ?? undefined,
-            }}
-          >
-            {currentText}
-          </Box>
-        </Tooltip>
-        <TemplateFieldContextMenu
-          anchorPosition={contextMenuPosition}
-          onClose={() => setContextMenuPosition(null)}
-          onSelectField={handleInsertField}
+      <Box ref={containerRef} sx={{ position: 'relative' }}>
+        <Box
+          ref={contentRef}
+          onClick={handleClick}
+          contentEditable={true}
+          suppressContentEditableWarning
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+          onInput={handleInput}
+          sx={{
+            cursor: 'text',
+            outline: '2px solid #0079cc',
+            outlineOffset: '-2px',
+            wordWrap: 'break-word',
+            whiteSpace: 'pre-wrap',
+            boxSizing: 'border-box',
+            // Apply same padding/styling as the rendered component for consistency
+            padding: (block?.data as any)?.style?.padding
+              ? `${(block.data as any).style.padding.top}px ${(block.data as any).style.padding.right}px ${(block.data as any).style.padding.bottom}px ${(block.data as any).style.padding.left}px`
+              : undefined,
+            color: (block?.data as any)?.style?.color ?? undefined,
+            backgroundColor: (block?.data as any)?.style?.backgroundColor ?? undefined,
+            fontSize: (block?.data as any)?.style?.fontSize ?? undefined,
+            fontFamily: (block?.data as any)?.style?.fontFamily ?? undefined,
+            fontWeight: (block?.data as any)?.style?.fontWeight ?? undefined,
+            fontStyle: (block?.data as any)?.style?.fontStyle ?? undefined,
+            textAlign: (block?.data as any)?.style?.textAlign ?? undefined,
+          }}
+        >
+          {currentText}
+        </Box>
+
+        <TemplateFieldFloatingButton
+          position={floatingButtonPosition}
+          isTyping={isTyping}
+          show={showFloatingButton && templateFields.length > 0}
           fields={templateFields}
+          onSelectField={handleInsertField}
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          onMenuOpenChange={setIsMenuOpen}
         />
-      </>
+      </Box>
     );
   }
 

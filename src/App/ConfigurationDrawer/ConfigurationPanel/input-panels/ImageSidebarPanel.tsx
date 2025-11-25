@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { ZodError } from 'zod';
 
 import {
   VerticalAlignBottomOutlined,
@@ -25,7 +26,7 @@ const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
 
 export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelProps) {
-  const [, setErrors] = useState<Zod.ZodError | null>(null);
+  const [, setErrors] = useState<ZodError | null>(null);
   const [inputMode, setInputMode] = useState<'URL' | 'UPLOAD'>(() => {
     // Infer mode from URL: if it starts with 'data:', it's an uploaded image
     const url = data.props?.url ?? '';

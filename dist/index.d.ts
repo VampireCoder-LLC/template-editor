@@ -326,6 +326,316 @@ lineHeight: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
 }, z.core.$strip>;
 }>, any>>;
 
+declare const EditorConfigurationSchema: z.ZodRecord<z.ZodString, z.ZodPipe<z.ZodDiscriminatedUnion<any, "type">, z.ZodTransform<BlockConfiguration<    {
+Button: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+fontSize: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+fontFamily: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+MODERN_SANS: "MODERN_SANS";
+BOOK_SANS: "BOOK_SANS";
+ORGANIC_SANS: "ORGANIC_SANS";
+GEOMETRIC_SANS: "GEOMETRIC_SANS";
+HEAVY_SANS: "HEAVY_SANS";
+ROUNDED_SANS: "ROUNDED_SANS";
+MODERN_SERIF: "MODERN_SERIF";
+BOOK_SERIF: "BOOK_SERIF";
+MONOSPACE: "MONOSPACE";
+}>>>;
+fontWeight: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+bold: "bold";
+normal: "normal";
+}>>>;
+fontStyle: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+normal: "normal";
+italic: "italic";
+}>>>;
+textAlign: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+right: "right";
+left: "left";
+center: "center";
+justify: "justify";
+}>>>;
+textDecoration: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+buttonBackgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+buttonStyle: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+rectangle: "rectangle";
+pill: "pill";
+rounded: "rounded";
+}>>>;
+buttonTextColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+fullWidth: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
+size: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+"x-small": "x-small";
+small: "small";
+large: "large";
+medium: "medium";
+}>>>;
+text: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+url: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+borderRadius: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+Container: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+borderColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+borderRadius: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+childrenIds: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+ColumnsContainer: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+columns: z.ZodTuple<[z.ZodObject<{
+childrenIds: z.ZodArray<z.ZodString>;
+}, z.core.$strip>, z.ZodObject<{
+childrenIds: z.ZodArray<z.ZodString>;
+}, z.core.$strip>, z.ZodObject<{
+childrenIds: z.ZodArray<z.ZodString>;
+}, z.core.$strip>], null>;
+fixedWidths: z.ZodNullable<z.ZodOptional<z.ZodTuple<[z.ZodOptional<z.ZodNullable<z.ZodNumber>>, z.ZodOptional<z.ZodNullable<z.ZodNumber>>, z.ZodOptional<z.ZodNullable<z.ZodNumber>>], null>>>;
+columnsCount: z.ZodNullable<z.ZodOptional<z.ZodUnion<readonly [z.ZodLiteral<2>, z.ZodLiteral<3>]>>>;
+columnsGap: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+contentAlignment: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+top: "top";
+bottom: "bottom";
+middle: "middle";
+}>>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+Heading: z.ZodObject<{
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+text: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+level: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+h1: "h1";
+h2: "h2";
+h3: "h3";
+h4: "h4";
+h5: "h5";
+h6: "h6";
+}>>>;
+}, z.core.$strip>>>;
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+color: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+fontFamily: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+MODERN_SANS: "MODERN_SANS";
+BOOK_SANS: "BOOK_SANS";
+ORGANIC_SANS: "ORGANIC_SANS";
+GEOMETRIC_SANS: "GEOMETRIC_SANS";
+HEAVY_SANS: "HEAVY_SANS";
+ROUNDED_SANS: "ROUNDED_SANS";
+MODERN_SERIF: "MODERN_SERIF";
+BOOK_SERIF: "BOOK_SERIF";
+MONOSPACE: "MONOSPACE";
+}>>>;
+fontWeight: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+bold: "bold";
+normal: "normal";
+}>>>;
+fontStyle: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+normal: "normal";
+italic: "italic";
+}>>>;
+textAlign: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+right: "right";
+left: "left";
+center: "center";
+justify: "justify";
+}>>>;
+textDecoration: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+Html: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+color: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+fontFamily: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+MODERN_SANS: "MODERN_SANS";
+BOOK_SANS: "BOOK_SANS";
+ORGANIC_SANS: "ORGANIC_SANS";
+GEOMETRIC_SANS: "GEOMETRIC_SANS";
+HEAVY_SANS: "HEAVY_SANS";
+ROUNDED_SANS: "ROUNDED_SANS";
+MODERN_SERIF: "MODERN_SERIF";
+BOOK_SERIF: "BOOK_SERIF";
+MONOSPACE: "MONOSPACE";
+}>>>;
+fontSize: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+fontStyle: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+normal: "normal";
+italic: "italic";
+}>>>;
+textAlign: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+right: "right";
+left: "left";
+center: "center";
+justify: "justify";
+}>>>;
+textDecoration: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+contents: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+Image: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+backgroundColor: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+textAlign: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+right: "right";
+left: "left";
+center: "center";
+justify: "justify";
+}>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+width: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+height: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+url: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+alt: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+linkHref: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+contentAlignment: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+top: "top";
+bottom: "bottom";
+middle: "middle";
+}>>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+Text: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+color: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+fontSize: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+fontFamily: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+MODERN_SANS: "MODERN_SANS";
+BOOK_SANS: "BOOK_SANS";
+ORGANIC_SANS: "ORGANIC_SANS";
+GEOMETRIC_SANS: "GEOMETRIC_SANS";
+HEAVY_SANS: "HEAVY_SANS";
+ROUNDED_SANS: "ROUNDED_SANS";
+MODERN_SERIF: "MODERN_SERIF";
+BOOK_SERIF: "BOOK_SERIF";
+MONOSPACE: "MONOSPACE";
+}>>>;
+fontWeight: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+bold: "bold";
+normal: "normal";
+}>>>;
+fontStyle: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+normal: "normal";
+italic: "italic";
+}>>>;
+textAlign: z.ZodNullable<z.ZodOptional<z.ZodEnum<{
+right: "right";
+left: "left";
+center: "center";
+justify: "justify";
+}>>>;
+textDecoration: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+markdown: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
+text: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+EmailLayout: z.ZodObject<{
+backdropColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+borderColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+borderRadius: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+canvasColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+textColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+fontFamily: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+MODERN_SANS: "MODERN_SANS";
+BOOK_SANS: "BOOK_SANS";
+ORGANIC_SANS: "ORGANIC_SANS";
+GEOMETRIC_SANS: "GEOMETRIC_SANS";
+HEAVY_SANS: "HEAVY_SANS";
+ROUNDED_SANS: "ROUNDED_SANS";
+MODERN_SERIF: "MODERN_SERIF";
+BOOK_SERIF: "BOOK_SERIF";
+MONOSPACE: "MONOSPACE";
+}>>>;
+contentWidth: z.ZodOptional<z.ZodNullable<z.ZodEnum<{
+600: "600";
+640: "640";
+700: "700";
+}>>>;
+shadowColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+shadowSize: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+shadowOpacity: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+childrenIds: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
+}, z.core.$strip>;
+Spacer: z.ZodObject<{
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+height: z.ZodOptional<z.ZodNullable<z.ZodOptional<z.ZodNumber>>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+Divider: z.ZodObject<{
+style: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+backgroundColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+padding: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+top: z.ZodNumber;
+bottom: z.ZodNumber;
+right: z.ZodNumber;
+left: z.ZodNumber;
+}, z.core.$strip>>>;
+}, z.core.$strip>>>;
+props: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+lineColor: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+lineHeight: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+}, z.core.$strip>>>;
+}, z.core.$strip>;
+}>, any>>>;
+
 export declare function Reader({ document, rootBlockId }: TReaderProps): JSX.Element;
 
 declare const ReaderBlockSchema: z.ZodPipe<z.ZodDiscriminatedUnion<any, "type">, z.ZodTransform<BlockConfiguration<    {
@@ -642,8 +952,7 @@ export declare function renderToStaticMarkup(document: TReaderDocument, { rootBl
 
 export declare type TEditorBlock = z.infer<typeof EditorBlockSchema>;
 
-export declare type TEditorConfiguration = {
-    [key: string]: TEditorBlock | string;
+export declare type TEditorConfiguration = z.infer<typeof EditorConfigurationSchema> & {
     subject?: string;
 };
 

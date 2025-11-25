@@ -120,7 +120,6 @@ export const EditorBlockSchema = buildBlockConfigurationSchema(EDITOR_DICTIONARY
 export const EditorConfigurationSchema = z.record(z.string(), EditorBlockSchema);
 
 export type TEditorBlock = z.infer<typeof EditorBlockSchema>;
-export type TEditorConfiguration = {
-  [key: string]: TEditorBlock | string;
+export type TEditorConfiguration = z.infer<typeof EditorConfigurationSchema> & {
   subject?: string;
 };
