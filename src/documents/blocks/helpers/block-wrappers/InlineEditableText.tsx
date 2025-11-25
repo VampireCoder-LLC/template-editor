@@ -6,7 +6,7 @@ import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
 import TemplateFieldFloatingButton from '../TemplateFieldFloatingButton';
 
 type InlineEditableTextProps = {
-  children: JSX.Element;
+  children: React.ReactElement;
   blockType: 'Text' | 'Heading';
 };
 
@@ -19,7 +19,7 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
   const [isEditing, setIsEditing] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const savedSelectionRef = useRef<Range | null>(null);
   const isInsertingFieldRef = useRef(false);
   const pendingCursorPositionRef = useRef<number | null>(null);
@@ -29,7 +29,7 @@ export default function InlineEditableText({ children, blockType }: InlineEditab
   const [floatingButtonPosition, setFloatingButtonPosition] = useState<{ top: number; left: number } | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isSelected = selectedBlockId === blockId;
   const currentText = block?.data?.props?.text ?? '';

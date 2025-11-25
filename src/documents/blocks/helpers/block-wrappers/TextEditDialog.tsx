@@ -5,7 +5,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Stack } from
 import { TextProps, TextPropsSchema } from '../../../../blocks/text';
 import { HeadingProps, HeadingPropsSchema } from '../../../../blocks/heading';
 import { setDocument, useDocument } from '../../../editor/EditorContext';
-import TextInput from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextInput';
+import TextInput from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextInput';
 
 type TextEditDialogProps = {
   blockId: string;

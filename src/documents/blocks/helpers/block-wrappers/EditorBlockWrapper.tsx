@@ -8,7 +8,7 @@ import { setSelectedBlockId, useSelectedBlockId, useDocument } from '../../../ed
 import BlockActionsMenu from './BlockActionsMenu';
 
 type TEditorBlockWrapperProps = {
-  children: JSX.Element;
+  children: React.ReactElement;
 };
 
 export default function EditorBlockWrapper({ children }: TEditorBlockWrapperProps) {

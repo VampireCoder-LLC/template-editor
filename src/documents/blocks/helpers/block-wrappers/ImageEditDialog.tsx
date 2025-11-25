@@ -4,8 +4,8 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Stack } from
 
 import { ImageProps, ImagePropsSchema } from '../../../../blocks/image';
 import { setDocument, useDocument } from '../../../editor/EditorContext';
-import TextInput from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextInput';
-import TextDimensionInput from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextDimensionInput';
+import TextInput from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextInput';
+import TextDimensionInput from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextDimensionInput';
 
 type ImageEditDialogProps = {
   blockId: string;

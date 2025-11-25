@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { InputLabel, Stack, ToggleButtonGroup } from '@mui/material';
 
 type Props = {
-  label: string | JSX.Element;
-  children: JSX.Element | JSX.Element[];
+  label: string | React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
   defaultValue: string;
   onChange: (v: string) => void;
 };

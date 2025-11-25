@@ -1,10 +1,11 @@
+import React from 'react';
 import { z } from 'zod';
 
 export type BaseZodDictionary = { [name: string]: z.ZodObject<any> };
 export type DocumentBlocksDictionary<T extends BaseZodDictionary> = {
   [K in keyof T]: {
     schema: T[K];
-    Component: (props: z.infer<T[K]>) => JSX.Element;
+    Component: (props: z.infer<T[K]>) => React.ReactElement;
   };
 };
 

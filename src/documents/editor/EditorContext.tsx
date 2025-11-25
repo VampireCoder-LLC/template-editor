@@ -92,13 +92,13 @@ export function resetDocument(document: TValue['document'], selectedBlockId?: st
   });
 }
 
-export function setDocument(document: TValue['document']) {
+export function setDocument(document: Partial<TEditorConfiguration>) {
   const originalDocument = editorStateStore.getState().document;
   return editorStateStore.setState({
     document: {
       ...originalDocument,
       ...document,
-    },
+    } as TEditorConfiguration,
   });
 }
 

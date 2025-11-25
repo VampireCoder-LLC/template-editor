@@ -8,7 +8,7 @@ type Props = {
   label: string;
   rows?: number;
   placeholder?: string;
-  helperText?: string | JSX.Element;
+  helperText?: string | React.ReactElement;
   InputProps?: InputProps;
   defaultValue: string;
   onChange: (v: string) => void;
@@ -35,7 +35,7 @@ export default function TextInput({
   const [floatingButtonPosition, setFloatingButtonPosition] = useState<{ top: number; left: number } | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isMultiline = typeof rows === 'number' && rows > 1;
 

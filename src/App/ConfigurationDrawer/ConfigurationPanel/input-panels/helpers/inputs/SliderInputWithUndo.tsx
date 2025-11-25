@@ -4,7 +4,7 @@ import { Box, InputLabel, Slider, Stack, Typography } from '@mui/material';
 
 type SliderInputProps = {
   label: string;
-  iconLabel: JSX.Element;
+  iconLabel: React.ReactElement;
 
   step?: number;
   marks?: boolean;

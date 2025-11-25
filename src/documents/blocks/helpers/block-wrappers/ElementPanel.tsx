@@ -24,18 +24,18 @@ import { TEditorBlock } from '../../../editor/core';
 import { resetDocument, setDocument, useDocument } from '../../../editor/EditorContext';
 import { useTemplateFields } from '../../../editor/TemplateFieldsContext';
 import { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
-import TemplateFieldsSection from '../../../../App/InspectorDrawer/TemplateFieldsSection';
+import TemplateFieldsSection from '../../../../App/ConfigurationDrawer/TemplateFieldsSection';
 
-import ButtonSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ButtonSidebarPanel';
-import ColumnsContainerSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ColumnsContainerSidebarPanel';
-import ContainerSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ContainerSidebarPanel';
-import DividerSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/DividerSidebarPanel';
-import EmailLayoutSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/EmailLayoutSidebarPanel';
-import HeadingSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/HeadingSidebarPanel';
-import HtmlSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/HtmlSidebarPanel';
-import ImageSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/ImageSidebarPanel';
-import SpacerSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/SpacerSidebarPanel';
-import TextSidebarPanel from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/TextSidebarPanel';
+import ButtonSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/ButtonSidebarPanel';
+import ColumnsContainerSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/ColumnsContainerSidebarPanel';
+import ContainerSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/ContainerSidebarPanel';
+import DividerSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/DividerSidebarPanel';
+import EmailLayoutSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/EmailLayoutSidebarPanel';
+import HeadingSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/HeadingSidebarPanel';
+import HtmlSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/HtmlSidebarPanel';
+import ImageSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/ImageSidebarPanel';
+import SpacerSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/SpacerSidebarPanel';
+import TextSidebarPanel from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/TextSidebarPanel';
 
 const sx: SxProps = {
   position: 'absolute',
@@ -76,6 +76,7 @@ export default function ElementPanel({ blockId }: Props) {
   const editorDocument = useDocument();
   const templateFields = useTemplateFields();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
 
   const block = editorDocument[blockId];
 

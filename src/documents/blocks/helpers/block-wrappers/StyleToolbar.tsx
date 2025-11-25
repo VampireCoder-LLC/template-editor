@@ -34,10 +34,10 @@ import {
 
 import { TStyle } from '../../helpers/TStyle';
 import { TEditorBlock } from '../../../editor/core';
-import { NullableFontFamily } from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/FontFamily';
-import TextDecorationInput from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextDecorationInput';
-import PaddingInput from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/PaddingInput';
-import Picker from '../../../../App/InspectorDrawer/ConfigurationPanel/input-panels/helpers/inputs/ColorInput/Picker';
+import { NullableFontFamily } from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/FontFamily';
+import TextDecorationInput from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/TextDecorationInput';
+import PaddingInput from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/PaddingInput';
+import Picker from '../../../../App/ConfigurationDrawer/ConfigurationPanel/input-panels/helpers/inputs/ColorInput/Picker';
 import { setDocument, useDocument } from '../../../editor/EditorContext';
 
 const FONT_SIZES = [10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48];

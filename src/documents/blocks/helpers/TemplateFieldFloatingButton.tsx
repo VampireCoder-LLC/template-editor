@@ -20,7 +20,7 @@ interface TemplateFieldFloatingButtonProps {
   onSelectField: (fieldName: string) => void;
 
   /** Reference to the container element for boundary checks */
-  containerRef: React.RefObject<HTMLElement>;
+  containerRef: React.RefObject<HTMLElement | HTMLDivElement | null>;
 
   /** Callback when menu open state changes */
   onMenuOpenChange?: (isOpen: boolean) => void;
