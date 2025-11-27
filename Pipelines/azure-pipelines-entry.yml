@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage:
+    "ubuntu-latest"
+
+variables:
+- group: vampirecoder-template-editor
+
+stages:
+  - stage: MirrorToGithub
+    jobs:
+      - job: Mirror_To_Github
+        workspace:
+          clean: all
+        steps:
+          - template: MirrorProjectToGithub.yml
